@@ -143,6 +143,7 @@ export interface GenerateResponse {
   assembly: AssembledPage;
   metrics: QualityMetrics;
   debug: DebugInfo;
+  mmss: import("@/types/mmss").MMSSMetrics;
 }
 
 export interface DebugInfo {

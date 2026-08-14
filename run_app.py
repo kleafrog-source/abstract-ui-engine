@@ -12,6 +12,7 @@ from backend.config import FLASK_HOST, FLASK_PORT, NEXT_PORT
 
 ROOT_DIR = Path(__file__).resolve().parent
 REPLACE_FRONTEND_ON_PORT = os.getenv("REPLACE_FRONTEND_ON_PORT", "1") == "1"
+RESET_NEXT_DEV_CACHE = os.getenv("RESET_NEXT_DEV_CACHE", "1") == "1"
 
 
 def ensure_embeddings() -> None:
@@ -77,6 +78,16 @@ def stop_processes_on_port(port: int) -> None:
         )
 
 
+def clear_next_dev_cache() -> None:
+    if not RESET_NEXT_DEV_CACHE:
+        return
+    next_dev_cache = ROOT_DIR / ".next" / "dev" / "cache"
+    if not next_dev_cache.exists():
+        return
+    print(f"[run_app] clearing Next.js dev cache: {next_dev_cache}")
+    shutil.rmtree(next_dev_cache, ignore_errors=True)
+
+
 def start_frontend() -> subprocess.Popen[str] | None:
     if os.getenv("START_FRONTEND", "1") != "1":
         return None
@@ -95,6 +106,7 @@ def start_frontend() -> subprocess.Popen[str] | None:
     if not npm_executable:
         print("[run_app] npm executable not found; starting Flask without frontend dev server.")
         return None
+    clear_next_dev_cache()
     return subprocess.Popen(
         [npm_executable, "run", "dev"],
         cwd=ROOT_DIR,

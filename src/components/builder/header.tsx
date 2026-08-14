@@ -152,13 +152,16 @@ export function Header() {
           </TooltipProvider>
           <ThemeToggle />
 
-          <Tabs value={mode} onValueChange={(v) => setMode(v as "architect" | "genesis")}>
+          <Tabs value={mode} onValueChange={(v) => setMode(v as "architect" | "genesis" | "settings")}>
             <TabsList className="h-8">
               <TabsTrigger value="architect" className="text-xs">
                 Architect
               </TabsTrigger>
               <TabsTrigger value="genesis" className="text-xs">
                 Genesis
+              </TabsTrigger>
+              <TabsTrigger value="settings" className="text-xs">
+                Settings
               </TabsTrigger>
             </TabsList>
           </Tabs>

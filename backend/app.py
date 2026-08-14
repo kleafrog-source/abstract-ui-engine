@@ -9,12 +9,14 @@ from .assembly import assemble
 from .config import CONFIG_SUMMARY, CORS_ORIGINS
 from .embeddings import cache_stats
 from .lexicon import add_custom_entry, custom_entry_id, lexicon_stats, load_lexicon
+from .mmss_bridge import MMSSMetrics
 from .search_engine import build_debug, build_index, rebuild_index, search
 
 
 def create_app() -> Flask:
     app = Flask(__name__)
     CORS(app, resources={r"/api/*": {"origins": CORS_ORIGINS}})
+    mmss = MMSSMetrics()
 
     build_index()
 
@@ -115,7 +117,8 @@ def create_app() -> Flask:
         )
         result["tookMs"] = int((perf_counter() - started) * 1000)
         debug = build_debug(query, result["hits"])
-        return jsonify({"result": result, **assembly_payload, "debug": debug})
+        mmss_metrics = mmss.compute(assembly_payload["assembly"]["standalone"])
+        return jsonify({"result": result, **assembly_payload, "debug": debug, "mmss": mmss_metrics})
 
     @app.post("/api/engine/metrics")
     def engine_metrics_route():

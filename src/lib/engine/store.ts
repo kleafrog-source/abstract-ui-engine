@@ -14,9 +14,10 @@ import {
 } from "./client";
 
 export type EngineMode = "architect" | "genesis";
+export type EngineViewMode = "architect" | "genesis" | "settings";
 
 interface EngineState {
-  mode: EngineMode;
+  mode: EngineViewMode;
   query: string;
   temperature: number; // 0 strict .. 1 creative
   locked: string[];
@@ -26,7 +27,7 @@ interface EngineState {
   debug: DebugResponse | null;
   lastParams: GenerateParams | null;
 
-  setMode: (m: EngineMode) => void;
+  setMode: (m: EngineViewMode) => void;
   setQuery: (q: string) => void;
   setTemperature: (t: number) => void;
   toggleLock: (id: string) => void;

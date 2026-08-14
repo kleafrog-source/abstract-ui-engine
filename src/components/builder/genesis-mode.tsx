@@ -16,6 +16,7 @@ import { useEngine } from "@/lib/engine/store";
 import { QueryBar } from "./query-bar";
 import { PreviewFrame } from "./preview-frame";
 import { MetricsDashboard } from "./metrics-dashboard";
+import { MMSSPanel } from "./MMSSPanel";
 import { downloadStandalone } from "@/lib/engine/client";
 import { toast } from "sonner";
 
@@ -37,6 +38,7 @@ export function GenesisMode() {
   const [exporting, setExporting] = React.useState(false);
   const standalone = response?.assembly.standalone ?? "";
   const metrics = response?.metrics ?? null;
+  const mmss = response?.mmss ?? null;
 
   const handleExport = async () => {
     if (!lastParams) {
@@ -117,6 +119,7 @@ export function GenesisMode() {
         </div>
         <div className="space-y-3 xl:col-span-3">
           <MetricsDashboard metrics={metrics} loading={loading} />
+          <MMSSPanel metrics={mmss} loading={loading} />
           <Card>
             <CardHeader className="pb-2">
               <CardTitle className="flex items-center gap-2 text-sm">

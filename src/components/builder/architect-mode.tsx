@@ -10,6 +10,7 @@ import { QueryBar } from "./query-bar";
 import { LexiconResults } from "./lexicon-results";
 import { BuildTree } from "./build-tree";
 import { MetricsDashboard } from "./metrics-dashboard";
+import { MMSSPanel } from "./MMSSPanel";
 import { DebugPanel } from "./debug-panel";
 import { PreviewFrame } from "./preview-frame";
 
@@ -33,6 +34,7 @@ export function ArchitectMode() {
   const standalone = response?.assembly.standalone ?? "";
   const tree = response?.assembly.tree ?? null;
   const metrics = response?.metrics ?? null;
+  const mmss = response?.mmss ?? null;
 
   return (
     <div className="grid grid-cols-1 gap-3 p-3 lg:grid-cols-12 xl:grid-cols-12">
@@ -103,6 +105,7 @@ export function ArchitectMode() {
       {/* RIGHT: metrics + debug */}
       <div className="space-y-3 lg:col-span-3 xl:col-span-3">
         <MetricsDashboard metrics={metrics} loading={loading} />
+        <MMSSPanel metrics={mmss} loading={loading} />
         <DebugPanel debug={debug} />
         {response && (
           <Card>
