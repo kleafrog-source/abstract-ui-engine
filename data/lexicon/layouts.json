@@ -1,7 +1,7 @@
 {
   "category": "layouts",
   "version": "2.0",
-  "count": 1079,
+  "count": 1088,
   "entries": [
     {
       "id": "layouts.0001",
@@ -28734,6 +28734,321 @@
       "conflicts": [
         "layout:primary"
       ]
+    },
+    {
+      "id": "layouts.1080",
+      "category": "layouts",
+      "name": "Hero Section Classic Centered",
+      "semantic_description": "Full-width hero section with centered headline, subheading, dual CTA buttons, and trust indicators below. Classic landing page pattern with clear visual hierarchy, eyebrow label, and product-marketing rhythm. Works for SaaS, mobile apps, and digital products.",
+      "tags": [
+        "hero",
+        "section",
+        "landing",
+        "centered",
+        "cta-cluster",
+        "trust-badges",
+        "marketing"
+      ],
+      "payload": "section hero-centered container-xl py-20 text-center",
+      "css": ".hero-centered { display:flex; flex-direction:column; align-items:center; gap:24px; padding:80px 24px; max-width:1200px; margin:0 auto; } .hero-eyebrow { font-size:14px; font-weight:600; color:#f97316; text-transform:uppercase; letter-spacing:0.05em; } .hero-title { font-size:48px; line-height:1.1; font-weight:700; color:#111827; } .hero-subtitle { font-size:18px; color:#6b7280; max-width:640px; } .hero-cta-group { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; } .hero-trust { display:flex; gap:24px; align-items:center; opacity:0.7; }",
+      "html": "<section class='hero-centered'><span class='hero-eyebrow'>New Release</span><h1 class='hero-title'>Build faster with our platform</h1><p class='hero-subtitle'>Everything you need to create, deploy, and scale your applications in one unified workspace.</p><div class='hero-cta-group'><button class='btn-primary'>Start Free Trial</button><button class='btn-secondary'>Watch Demo</button></div><div class='hero-trust'><span>Trusted by 10,000+ teams</span></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "center-narrow",
+        "desktop": "center-wide",
+        "behavior": "scale"
+      },
+      "conflicts": [
+        "layout:hero",
+        "section:hero-centered"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1081",
+      "category": "layouts",
+      "name": "Hero Split Screen Product",
+      "semantic_description": "Split-screen hero with left-aligned copy stack and right-side product visual or dashboard screenshot. Modern SaaS pattern with eyebrow, headline, description, CTA pair, and social proof logos. Balanced 50/50 desktop layout collapsing to stacked mobile.",
+      "tags": [
+        "hero",
+        "section",
+        "split",
+        "product-showcase",
+        "saas",
+        "dashboard-preview"
+      ],
+      "payload": "section hero-split grid-cols-2 container-xl py-24",
+      "css": ".hero-split { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:96px 24px; max-width:1280px; margin:0 auto; } .hero-content { display:flex; flex-direction:column; gap:20px; } .hero-visual { background:#f3f4f6; border-radius:16px; overflow:hidden; aspect-ratio:4/3; } @media(max-width:768px){.hero-split{grid-template-columns:1fr}}",
+      "html": "<section class='hero-split'><div class='hero-content'><span class='eyebrow'>Platform</span><h1>Ship features faster with confidence</h1><p>Unified development environment with built-in CI/CD, monitoring, and collaboration tools.</p><div class='cta-row'><button class='btn-primary'>Get Started</button><button class='btn-link'>Learn more →</button></div><div class='social-proof'><img src='logo1.png'/><img src='logo2.png'/><img src='logo3.png'/></div></div><div class='hero-visual'><img src='dashboard-preview.png' alt='Dashboard preview'/></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "stack",
+        "desktop": "split-50",
+        "behavior": "collapse"
+      },
+      "conflicts": [
+        "layout:hero",
+        "section:split-hero"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1082",
+      "category": "layouts",
+      "name": "Hero Dark Gradient Aurora",
+      "semantic_description": "Dark-themed hero with gradient aurora background effect, centered content stack, glowing CTA buttons, and animated particles. Premium tech aesthetic for developer tools, AI products, and Web3 platforms. High contrast with vibrant accent glows.",
+      "tags": [
+        "hero",
+        "section",
+        "dark",
+        "gradient",
+        "aurora",
+        "tech",
+        "developer",
+        "ai"
+      ],
+      "payload": "section hero-dark-gradient relative overflow-hidden py-32",
+      "css": ".hero-dark { position:relative; background:linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#0f172a 100%); padding:128px 24px; overflow:hidden; } .hero-dark::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%,rgba(139,92,246,0.3),transparent 50%); } .hero-dark::after { content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 80%,rgba(34,211,238,0.2),transparent 50%); } .hero-content { position:relative; max-width:900px; margin:0 auto; text-align:center; display:flex; flex-direction:column; gap:24px; } .hero-title { font-size:56px; font-weight:800; background:linear-gradient(to right,#fff,#a5b4fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }",
+      "html": "<section class='hero-dark'><div class='hero-content'><span class='eyebrow-glow'>Powered by AI</span><h1 class='hero-title'>Next-generation development platform</h1><p class='subtitle-light'>Build, test, and deploy with intelligent automation that adapts to your workflow.</p><div class='glow-buttons'><button class='btn-glow-primary'>Start Building</button><button class='btn-glow-secondary'>View Documentation</button></div></div></section>",
+      "responsive": {
+        "mobile": "compact",
+        "tablet": "medium",
+        "desktop": "full",
+        "behavior": "scale"
+      },
+      "conflicts": [
+        "layout:hero",
+        "section:dark-hero"
+      ],
+      "family": "aurora",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1083",
+      "category": "layouts",
+      "name": "Feature Grid Six Cards Marketing",
+      "semantic_description": "Six-card feature grid section with eyebrow label, section headline, and benefit cards arranged in 3x2 desktop grid. Each card has icon, title, concise description. Two-column tablet collapse, single-column mobile. Classic marketing page pattern for product benefits.",
+      "tags": [
+        "features",
+        "section",
+        "grid",
+        "cards",
+        "benefits",
+        "marketing",
+        "3x2-grid"
+      ],
+      "payload": "section features-grid container-xl py-24",
+      "css": ".features-section { padding:96px 24px; max-width:1200px; margin:0 auto; } .features-header { text-align:center; margin-bottom:64px; } .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; } .feature-card { padding:32px; border-radius:12px; background:#fff; border:1px solid #e5e7eb; display:flex; flex-direction:column; gap:16px; } .feature-icon { width:48px; height:48px; background:#f0f9ff; border-radius:8px; display:flex; align-items:center; justify-content:center; } @media(max-width:1024px){.features-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:640px){.features-grid{grid-template-columns:1fr}}",
+      "html": "<section class='features-section'><div class='features-header'><span class='eyebrow'>Features</span><h2>Everything you need to succeed</h2><p class='section-subtitle'>Powerful tools designed for modern teams.</p></div><div class='features-grid'><article class='feature-card'><div class='feature-icon'>⚡</div><h3>Lightning Fast</h3><p>Optimized performance with sub-second load times.</p></article><article class='feature-card'><div class='feature-icon'>🔒</div><h3>Enterprise Security</h3><p>Bank-grade encryption and compliance certifications.</p></article><article class='feature-card'><div class='feature-icon'>📊</div><h3>Advanced Analytics</h3><p>Deep insights into user behavior and trends.</p></article><article class='feature-card'><div class='feature-icon'>🔄</div><h3>Seamless Sync</h3><p>Real-time collaboration across all devices.</p></article><article class='feature-card'><div class='feature-icon'>🎨</div><h3>Customizable</h3><p>Tailor every aspect to match your brand.</p></article><article class='feature-card'><div class='feature-icon'>🤝</div><h3>24/7 Support</h3><p>Dedicated team ready to help anytime.</p></article></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "2-col",
+        "desktop": "3-col",
+        "behavior": "reflow"
+      },
+      "conflicts": [
+        "layout:features",
+        "section:feature-grid"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1084",
+      "category": "layouts",
+      "name": "Feature Bento Grid Modern",
+      "semantic_description": "Modern bento-style feature showcase with asymmetric grid cells of varying sizes. Large feature callouts span multiple rows while smaller features fill gaps. Contemporary 2025 design pattern popularized by Apple and Linear. Visual hierarchy through cell size variation.",
+      "tags": [
+        "features",
+        "section",
+        "bento",
+        "grid",
+        "asymmetric",
+        "modern",
+        "showcase"
+      ],
+      "payload": "section features-bento container-xl py-24",
+      "css": ".bento-features { display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:minmax(200px,auto); gap:24px; padding:96px 24px; max-width:1280px; margin:0 auto; } .bento-cell { background:#fff; border-radius:16px; padding:32px; border:1px solid #e5e7eb; display:flex; flex-direction:column; justify-content:space-between; } .bento-large { grid-column:span 2; grid-row:span 2; } .bento-wide { grid-column:span 2; } .bento-tall { grid-row:span 2; } @media(max-width:768px){.bento-features{grid-template-columns:1fr}.bento-large,.bento-wide,.bento-tall{grid-column:span 1;grid-row:span 1}}",
+      "html": "<section class='bento-features'><div class='bento-cell bento-large'><h3>Complete Platform</h3><p>All-in-one solution for your entire workflow.</p><div class='preview-img'></div></div><div class='bento-cell'><div class='icon-box'>🚀</div><h4>Fast Setup</h4></div><div class='bento-cell'><div class='icon-box'>📱</div><h4>Mobile Ready</h4></div><div class='bento-cell bento-wide'><h3>Team Collaboration</h3><p>Work together in real-time with comments and suggestions.</p></div><div class='bento-cell'><div class='icon-box'>🔗</div><h4>Integrations</h4></div><div class='bento-cell bento-tall'><h3>Analytics Dashboard</h3><p>Track metrics that matter.</p><div class='chart-preview'></div></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "2-col-mixed",
+        "desktop": "bento-4col",
+        "behavior": "adaptive"
+      },
+      "conflicts": [
+        "layout:bento",
+        "section:features-bento"
+      ],
+      "family": "bento",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1085",
+      "category": "layouts",
+      "name": "Pricing Section Three Tiers SaaS",
+      "semantic_description": "Three-tier pricing section with Starter/Pro/Enterprise plans. Middle tier highlighted as Most Popular with elevated card styling. Each plan includes price, billing toggle hint, feature list with checkmarks, and CTA button. Classic SaaS conversion pattern with annual/monthly switch.",
+      "tags": [
+        "pricing",
+        "section",
+        "tiers",
+        "saas",
+        "plans",
+        "subscription",
+        "conversion"
+      ],
+      "payload": "section pricing-tiers container-xl py-24",
+      "css": ".pricing-section { padding:96px 24px; max-width:1200px; margin:0 auto; } .pricing-header { text-align:center; margin-bottom:64px; } .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; align-items:start; } .pricing-card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; padding:40px 32px; display:flex; flex-direction:column; gap:24px; } .pricing-card.popular { border-color:#f97316; border-width:2px; position:relative; box-shadow:0 20px 40px rgba(0,0,0,0.1); } .popular-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#f97316; color:#fff; padding:4px 16px; border-radius:20px; font-size:12px; font-weight:600; } .price { font-size:48px; font-weight:700; } .price-period { font-size:14px; color:#6b7280; } .feature-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; } .feature-list li { display:flex; gap:12px; align-items:flex-start; } .check-icon { color:#22c55e; flex-shrink:0; } @media(max-width:1024px){.pricing-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}",
+      "html": "<section class='pricing-section'><div class='pricing-header'><span class='eyebrow'>Pricing</span><h2>Choose your plan</h2><p>Simple pricing for teams of all sizes.</p></div><div class='pricing-grid'><article class='pricing-card'><h3>Starter</h3><div class='price'>$19<span class='price-period'>/month</span></div><ul class='feature-list'><li><span class='check-icon'>✓</span>Up to 5 team members</li><li><span class='check-icon'>✓</span>Basic analytics</li><li><span class='check-icon'>✓</span>Email support</li></ul><button class='btn-outline'>Start Free Trial</button></article><article class='pricing-card popular'><span class='popular-badge'>Most Popular</span><h3>Professional</h3><div class='price'>$49<span class='price-period'>/month</span></div><ul class='feature-list'><li><span class='check-icon'>✓</span>Up to 25 team members</li><li><span class='check-icon'>✓</span>Advanced analytics</li><li><span class='check-icon'>✓</span>Priority support</li><li><span class='check-icon'>✓</span>Custom integrations</li></ul><button class='btn-primary'>Start Free Trial</button></article><article class='pricing-card'><h3>Enterprise</h3><div class='price'>$99<span class='price-period'>/month</span></div><ul class='feature-list'><li><span class='check-icon'>✓</span>Unlimited team members</li><li><span class='check-icon'>✓</span>Custom reporting</li><li><span class='check-icon'>✓</span>Dedicated account manager</li><li><span class='check-icon'>✓</span>SLA guarantee</li></ul><button class='btn-outline'>Contact Sales</button></article></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "single-column",
+        "desktop": "3-col",
+        "behavior": "collapse"
+      },
+      "conflicts": [
+        "layout:pricing",
+        "section:pricing-tiers"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1086",
+      "category": "layouts",
+      "name": "Testimonial Grid Social Proof",
+      "semantic_description": "Customer testimonial section with 6 quote cards in responsive grid. Each card features customer photo, name, role, company logo, and testimonial text. Includes section header with social proof headline. Trust-building pattern for landing pages with authentic customer voices.",
+      "tags": [
+        "testimonial",
+        "section",
+        "social-proof",
+        "reviews",
+        "customers",
+        "quotes",
+        "trust"
+      ],
+      "payload": "section testimonials container-xl py-24",
+      "css": ".testimonials-section { padding:96px 24px; max-width:1200px; margin:0 auto; background:#f9fafb; } .testimonials-header { text-align:center; margin-bottom:64px; } .testimonial-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; } .testimonial-card { background:#fff; padding:32px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05); display:flex; flex-direction:column; gap:20px; } .quote-icon { font-size:32px; color:#e5e7eb; } .customer-info { display:flex; gap:16px; align-items:center; } .customer-avatar { width:48px; height:48px; border-radius:50%; background:#e5e7eb; } .customer-details h4 { font-size:14px; font-weight:600; } .customer-details p { font-size:13px; color:#6b7280; } @media(max-width:1024px){.testimonial-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:640px){.testimonial-grid{grid-template-columns:1fr}}",
+      "html": "<section class='testimonials-section'><div class='testimonials-header'><span class='eyebrow'>Testimonials</span><h2>Loved by teams worldwide</h2><p>See what our customers have to say.</p></div><div class='testimonial-grid'><article class='testimonial-card'><p>This platform transformed how we work. The efficiency gains are incredible.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>Sarah Chen</h4><p>CTO at TechCorp</p></div></div></article><article class='testimonial-card'><p>Best investment we made this year. Support is phenomenal.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>Marcus Johnson</h4><p>Product Lead at StartupXYZ</p></div></div></article><article class='testimonial-card'><p>Finally a tool that understands modern workflows. Highly recommend.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>Elena Rodriguez</h4><p>Director at DesignStudio</p></div></div></article><article class='testimonial-card'><p>The ROI was visible within the first week. Game changer for us.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>David Park</h4><p>VP Engineering at ScaleCo</p></div></div></article><article class='testimonial-card'><p>Intuitive, powerful, and beautiful. Everything we needed.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>Anna Kowalski</h4><p>Founder at InnovateLab</p></div></div></article><article class='testimonial-card'><p>Our team productivity increased 40 percent. Absolutely worth it.</p><div class='customer-info'><div class='customer-avatar'></div><div class='customer-details'><h4>James Wilson</h4><p>COO at GrowthInc</p></div></div></article></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "2-col",
+        "desktop": "3-col",
+        "behavior": "reflow"
+      },
+      "conflicts": [
+        "layout:testimonials",
+        "section:testimonial-grid"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
+    },
+    {
+      "id": "layouts.1087",
+      "category": "layouts",
+      "name": "Dashboard Stats KPI Cards Row",
+      "semantic_description": "Dashboard KPI stats row with 4 metric cards showing key numbers, labels, trend indicators (up/down arrows with percentage), and optional sparkline charts. Data-dense layout for admin panels and analytics dashboards. Clean numerical hierarchy with contextual trends.",
+      "tags": [
+        "dashboard",
+        "section",
+        "stats",
+        "kpi",
+        "metrics",
+        "analytics",
+        "admin"
+      ],
+      "payload": "section dashboard-stats grid-cols-4 gap-6 py-6",
+      "css": ".stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:24px; } .stat-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:8px; } .stat-label { font-size:13px; color:#6b7280; font-weight:500; } .stat-value { font-size:32px; font-weight:700; color:#111827; } .stat-trend { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; } .trend-up { color:#22c55e; } .trend-down { color:#ef4444; } .sparkline { height:40px; margin-top:8px; } @media(max-width:1024px){.stats-row{grid-template-columns:repeat(2,1fr)}} @media(max-width:640px){.stats-row{grid-template-columns:1fr}}",
+      "html": "<section class='stats-row'><article class='stat-card'><span class='stat-label'>Total Revenue</span><span class='stat-value'>$124,592</span><span class='stat-trend trend-up'>+12.5%</span><div class='sparkline'></div></article><article class='stat-card'><span class='stat-label'>Active Users</span><span class='stat-value'>8,432</span><span class='stat-trend trend-up'>+8.2%</span><div class='sparkline'></div></article><article class='stat-card'><span class='stat-label'>Conversion Rate</span><span class='stat-value'>3.24%</span><span class='stat-trend trend-down'>-0.4%</span><div class='sparkline'></div></article><article class='stat-card'><span class='stat-label'>Avg Order Value</span><span class='stat-value'>$89.50</span><span class='stat-trend trend-up'>+5.1%</span><div class='sparkline'></div></article></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "2x2",
+        "desktop": "4-col",
+        "behavior": "adaptive"
+      },
+      "conflicts": [
+        "layout:stats",
+        "section:kpi-row"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "medium",
+        "retrieval_weight": 0.9
+      }
+    },
+    {
+      "id": "layouts.1088",
+      "category": "layouts",
+      "name": "Catalog Product Grid Eight Cards",
+      "semantic_description": "E-commerce product catalog grid with 8 product cards in 4x2 desktop layout. Each card shows product image, category tag, title, price, rating stars, and add-to-cart button. Includes section header with category title and view controls. Standard online store pattern with clean product presentation.",
+      "tags": [
+        "catalog",
+        "section",
+        "products",
+        "ecommerce",
+        "grid",
+        "cards",
+        "shopping"
+      ],
+      "payload": "section product-catalog container-xl py-16",
+      "css": ".catalog-section { padding:64px 24px; max-width:1400px; margin:0 auto; } .catalog-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; } .catalog-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:32px; } .product-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; transition:shadow .2s; } .product-card:hover { box-shadow:0 12px 24px rgba(0,0,0,0.1); } .product-image { aspect-ratio:1; background:#f3f4f6; } .product-info { padding:20px; display:flex; flex-direction:column; gap:8px; } .product-category { font-size:12px; color:#6b7280; text-transform:uppercase; } .product-title { font-weight:600; font-size:15px; } .product-price { font-weight:700; color:#111827; } .product-rating { color:#fbbf24; font-size:14px; } @media(max-width:1024px){.catalog-grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:640px){.catalog-grid{grid-template-columns:1fr}}",
+      "html": "<section class='catalog-section'><div class='catalog-header'><h2>New Arrivals</h2><div class='view-controls'><button class='btn-sm'>Grid</button><button class='btn-sm'>List</button></div></div><div class='catalog-grid'><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Electronics</span><h3 class='product-title'>Wireless Headphones Pro</h3><span class='product-rating'>5 stars</span><span class='product-price'>$299</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Accessories</span><h3 class='product-title'>Smart Watch Series 5</h3><span class='product-rating'>4 stars</span><span class='product-price'>$399</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Audio</span><h3 class='product-title'>Portable Speaker Mini</h3><span class='product-rating'>4 stars</span><span class='product-price'>$79</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Electronics</span><h3 class='product-title'>USB-C Hub 7-in-1</h3><span class='product-rating'>5 stars</span><span class='product-price'>$59</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Home</span><h3 class='product-title'>Smart LED Bulb Pack</h3><span class='product-rating'>4 stars</span><span class='product-price'>$45</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Accessories</span><h3 class='product-title'>Laptop Stand Aluminum</h3><span class='product-rating'>5 stars</span><span class='product-price'>$89</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Audio</span><h3 class='product-title'>Earbuds Sport Edition</h3><span class='product-rating'>4 stars</span><span class='product-price'>$129</span><button class='btn-primary btn-block'>Add to Cart</button></div></article><article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Electronics</span><h3 class='product-title'>Mechanical Keyboard RGB</h3><span class='product-rating'>5 stars</span><span class='product-price'>$159</span><button class='btn-primary btn-block'>Add to Cart</button></div></article></div></section>",
+      "responsive": {
+        "mobile": "stack",
+        "tablet": "2-col",
+        "desktop": "4-col",
+        "behavior": "reflow"
+      },
+      "conflicts": [
+        "layout:catalog",
+        "section:product-grid"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "section",
+        "section_capable": true,
+        "section_richness": "high",
+        "retrieval_weight": 1.0
+      }
     }
   ]
 }
