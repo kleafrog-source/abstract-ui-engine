@@ -1,0 +1,275 @@
+{
+  "quality": {
+    "total": 8494,
+    "sectionCapable": 38,
+    "lowValue": 636,
+    "microFragments": 1777,
+    "richSections": 8
+  },
+  "byCategory": {
+    "layouts": {
+      "total": 1080,
+      "sectionCapable": 8,
+      "lowValue": 5,
+      "microFragments": 9,
+      "richSections": 0
+    },
+    "components": {
+      "total": 2078,
+      "sectionCapable": 30,
+      "lowValue": 449,
+      "microFragments": 859,
+      "richSections": 8
+    },
+    "styles": {
+      "total": 1619,
+      "sectionCapable": 0,
+      "lowValue": 4,
+      "microFragments": 55,
+      "richSections": 0
+    },
+    "typography": {
+      "total": 1230,
+      "sectionCapable": 0,
+      "lowValue": 30,
+      "microFragments": 60,
+      "richSections": 0
+    },
+    "interactions": {
+      "total": 1299,
+      "sectionCapable": 0,
+      "lowValue": 135,
+      "microFragments": 59,
+      "richSections": 0
+    },
+    "utilities": {
+      "total": 1188,
+      "sectionCapable": 0,
+      "lowValue": 13,
+      "microFragments": 735,
+      "richSections": 0
+    }
+  },
+  "noisyCandidates": [
+    {
+      "id": "components.0010",
+      "category": "components",
+      "name": "solid-primary button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0021",
+      "category": "components",
+      "name": "solid-secondary button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0032",
+      "category": "components",
+      "name": "outline button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0043",
+      "category": "components",
+      "name": "ghost button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0054",
+      "category": "components",
+      "name": "gradient button loading",
+      "family": "aurora",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0065",
+      "category": "components",
+      "name": "glass button loading",
+      "family": "glassmorphism",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0076",
+      "category": "components",
+      "name": "neon button loading",
+      "family": "neon",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0087",
+      "category": "components",
+      "name": "brutalist button loading",
+      "family": "brutalist",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0098",
+      "category": "components",
+      "name": "pill button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0109",
+      "category": "components",
+      "name": "square button loading",
+      "family": "brutalist",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0120",
+      "category": "components",
+      "name": "icon-only button loading",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0131",
+      "category": "components",
+      "name": "fab button loading",
+      "family": "material",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0504",
+      "category": "components",
+      "name": "pill xs hover-focus",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0505",
+      "category": "components",
+      "name": "pill xs active-pressed",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0506",
+      "category": "components",
+      "name": "pill xs disabled-muted",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0507",
+      "category": "components",
+      "name": "pill sm hover-focus",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0508",
+      "category": "components",
+      "name": "pill sm active-pressed",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0509",
+      "category": "components",
+      "name": "pill sm disabled-muted",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0510",
+      "category": "components",
+      "name": "pill md hover-focus",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    },
+    {
+      "id": "components.0511",
+      "category": "components",
+      "name": "pill md active-pressed",
+      "family": "minimal-flat",
+      "entityLevel": "component",
+      "sectionRichness": 0.0,
+      "retrievalWeight": 0.54,
+      "lowValue": true,
+      "microFragment": true
+    }
+  ]
+}

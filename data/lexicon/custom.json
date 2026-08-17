@@ -1,7 +1,7 @@
 {
   "category": "components",
   "version": "1.0.0",
-  "count": 24,
+  "count": 32,
   "entries": [
     {
       "id": "custom.components.glass-hover-reveal-card",
@@ -566,6 +566,206 @@
       "js": "",
       "family": "motion-system",
       "conflicts": []
+    },
+    {
+      "id": "custom.components.travel-hero-booking-command",
+      "category": "components",
+      "name": "Travel hero booking command section",
+      "semantic_description": "A full travel booking hero section with headline, supporting copy, compact search controls, destination proof points, dual call-to-action cluster, and a side information panel. Designed for travel landing pages, booking products, and marketplace intros where the first section must feel complete, commercial, and structurally rich rather than decorative.",
+      "tags": [
+        "hero section",
+        "travel booking",
+        "search controls",
+        "cta cluster",
+        "destination cards",
+        "landing intro"
+      ],
+      "payload": "travel-hero-booking-command full section",
+      "css": ".travel-hero-booking-command{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(20rem,.8fr);gap:1.5rem;padding:2rem;border-radius:1.75rem;background:linear-gradient(160deg,#fdf6ec 0%,#f8fbff 48%,#e8fbff 100%);border:1px solid rgba(15,23,42,.08);}.travel-hero-booking-command .hero-search{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1rem;}.travel-hero-booking-command .hero-search input,.travel-hero-booking-command .hero-search button{padding:.85rem 1rem;border-radius:999px;border:1px solid rgba(15,23,42,.1);}.travel-hero-booking-command .hero-side{display:grid;gap:.75rem;}.travel-hero-booking-command .hero-stat{padding:1rem;border-radius:1.1rem;background:rgba(255,255,255,.82);border:1px solid rgba(15,23,42,.08);}.travel-hero-booking-command .hero-destinations{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1rem;}.travel-hero-booking-command .hero-destinations article{padding:1rem;border-radius:1rem;background:rgba(255,255,255,.78);}",
+      "html": "<section class=\"travel-hero-booking-command\"><div><span class=\"section-kicker\">Journey design</span><h1>Book complex trips with calm planning tools</h1><p>Search routes, compare stays, and orchestrate travel details from one guided booking surface.</p><div class=\"hero-search\"><input placeholder=\"Where to?\" /><input placeholder=\"Dates\" /><button>Search trips</button></div><div class=\"hero-actions\" style=\"margin-top:1rem\"><a class=\"btn btn--primary\" href=\"#\">Start booking</a><a class=\"btn btn--ghost\" href=\"#\">Explore destinations</a></div><div class=\"hero-destinations\"><article><strong>Lisbon</strong><p>Warm coast, flexible stays, local routes.</p></article><article><strong>Seoul</strong><p>Fast booking flows, food maps, city passes.</p></article><article><strong>Reykjavik</strong><p>Nature trips, compact itineraries, winter alerts.</p></article></div></div><aside class=\"hero-side\"><div class=\"hero-stat\"><strong>128</strong><p>curated route bundles</p></div><div class=\"hero-stat\"><strong>24/7</strong><p>trip change support</p></div><div class=\"hero-stat\"><strong>92%</strong><p>same-day quote coverage</p></div></aside></section>",
+      "family": "showcase-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.feature-comparison-mosaic-section",
+      "category": "components",
+      "name": "Feature comparison mosaic section",
+      "semantic_description": "A complete feature comparison section with heading row, six feature cards, eyebrow labels, concise benefits, and side-by-side capability rhythm. Suitable for SaaS landing pages, AI tools, product comparisons, and premium feature storytelling.",
+      "tags": [
+        "features section",
+        "comparison grid",
+        "feature cards",
+        "six cards",
+        "benefit section",
+        "landing body"
+      ],
+      "payload": "feature-comparison-mosaic-section full grid section",
+      "css": ".feature-comparison-mosaic{padding:2rem;border-radius:1.5rem;background:#fff;border:1px solid rgba(15,23,42,.08);}.feature-comparison-mosaic .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}.feature-comparison-mosaic article{padding:1rem;border-radius:1rem;background:linear-gradient(180deg,#ffffff,#f8fafc);border:1px solid rgba(15,23,42,.08);}",
+      "html": "<section class=\"feature-comparison-mosaic\"><div class=\"section-heading\"><div><span class=\"section-kicker\">Capabilities</span><h2>Everything needed to move from prompt to polished page</h2><p>Structure, styling, motion, and semantic retrieval in one page-generation workflow.</p></div><a class=\"btn btn--ghost\" href=\"#\">See architecture</a></div><div class=\"feature-grid\"><article><span class=\"feature-card__index\">01</span><h3>Section-first retrieval</h3><p>Major slots prefer meaningful structural candidates over tiny fragments.</p></article><article><span class=\"feature-card__index\">02</span><h3>Adaptive archetypes</h3><p>The engine chooses landing, dashboard, docs, or catalog flow automatically.</p></article><article><span class=\"feature-card__index\">03</span><h3>Rich debug bundles</h3><p>Every slot exposes base, layouts, sections, support, style, and interaction layers.</p></article><article><span class=\"feature-card__index\">04</span><h3>Semantic config</h3><p>Query intent can drive page parameters before generation starts.</p></article><article><span class=\"feature-card__index\">05</span><h3>Standalone export</h3><p>Pages can be exported as self-contained HTML with inline assets.</p></article><article><span class=\"feature-card__index\">06</span><h3>MMSS feedback</h3><p>Structural quality metrics stay visible during iteration.</p></article></div></section>",
+      "family": "showcase-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.pricing-decision-grid-section",
+      "category": "components",
+      "name": "Pricing decision grid section",
+      "semantic_description": "A full pricing section with three plan cards, comparison points, clear CTA actions, and trustworthy decision rhythm. Good for SaaS pricing pages, product subscriptions, and conversion-focused landing structures.",
+      "tags": [
+        "pricing section",
+        "pricing cards",
+        "tiers",
+        "comparison plans",
+        "three cards",
+        "cta pricing"
+      ],
+      "payload": "pricing-decision-grid-section full plans section",
+      "css": ".pricing-decision-grid{padding:2rem;border-radius:1.5rem;background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid rgba(15,23,42,.08);}.pricing-decision-grid .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}.pricing-decision-grid .plan{padding:1.2rem;border-radius:1rem;background:#fff;border:1px solid rgba(15,23,42,.1);display:flex;flex-direction:column;gap:.75rem;}",
+      "html": "<section class=\"pricing-decision-grid\"><div class=\"section-heading\"><div><span class=\"section-kicker\">Plans</span><h2>Choose the operating mode that fits your team</h2><p>Clear tiers for experimentation, production workflows, and design-system scale.</p></div></div><div class=\"pricing-grid\"><article class=\"plan\"><strong>Starter</strong><h3>$19</h3><p>For local experiments and compact semantic catalogs.</p><ul><li>Basic generation</li><li>MMSS report</li><li>Standalone export</li></ul><a class=\"btn btn--ghost\" href=\"#\">Start small</a></article><article class=\"plan\"><strong>Studio</strong><h3>$59</h3><p>For teams building repeatable UI generation workflows.</p><ul><li>Richer bundles</li><li>Semantic config</li><li>Advanced debug</li></ul><a class=\"btn btn--primary\" href=\"#\">Choose studio</a></article><article class=\"plan\"><strong>Scale</strong><h3>$149</h3><p>For large lexicons, QA loops, and retrieval-heavy production pipelines.</p><ul><li>Large lexicon support</li><li>Review tooling</li><li>Integration guidance</li></ul><a class=\"btn btn--ghost\" href=\"#\">Talk to us</a></article></div></section>",
+      "family": "showcase-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.dashboard-workspace-sidebar-section",
+      "category": "components",
+      "name": "Dashboard workspace sidebar section",
+      "semantic_description": "A full dashboard sidebar section with workspace branding, grouped navigation, semantic labels, and utility footer actions. Useful for admin dashboards, analytics products, studio tools, and internal workspaces.",
+      "tags": [
+        "dashboard sidebar",
+        "workspace navigation",
+        "nav groups",
+        "admin sidebar",
+        "dashboard shell",
+        "workspace menu"
+      ],
+      "payload": "dashboard-workspace-sidebar-section full sidebar section",
+      "css": ".dashboard-workspace-sidebar{display:flex;flex-direction:column;gap:1rem;padding:1.5rem;border-radius:1.5rem;background:#0f172a;color:#e5eefb;min-height:34rem;}.dashboard-workspace-sidebar nav ul{display:grid;gap:.6rem;list-style:none;padding:0;margin:0;}.dashboard-workspace-sidebar a{display:block;padding:.7rem .85rem;border-radius:.85rem;background:rgba(255,255,255,.06);}",
+      "html": "<aside class=\"dashboard-workspace-sidebar\"><div><span class=\"section-kicker\" style=\"color:#93c5fd\">Workspace</span><h2 style=\"margin:.4rem 0 0\">Abstract UI Ops</h2><p style=\"color:#cbd5e1\">Generation, review, and semantic configuration in one studio surface.</p></div><nav><ul><li><a href=\"#\">Overview</a></li><li><a href=\"#\">Generation queue</a></li><li><a href=\"#\">Semantic config</a></li><li><a href=\"#\">Lexicon audit</a></li><li><a href=\"#\">MMSS reports</a></li></ul></nav><div class=\"dashboard-sidebar__footer\">5 active pipelines • 2 pending reviews</div></aside>",
+      "family": "nav-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.dashboard-kpi-storyboard-section",
+      "category": "components",
+      "name": "Dashboard KPI storyboard section",
+      "semantic_description": "A complete KPI and activity section for dashboards with four metric cards, trend notes, alert panel, and operational storyline. Suitable for analytics workspaces, admin products, and productivity dashboards.",
+      "tags": [
+        "dashboard stats",
+        "kpi section",
+        "metric cards",
+        "activity panel",
+        "analytics section",
+        "widgets section"
+      ],
+      "payload": "dashboard-kpi-storyboard-section metrics section",
+      "css": ".dashboard-kpi-storyboard{display:grid;gap:1rem;padding:1.75rem;border-radius:1.4rem;background:#fff;border:1px solid rgba(15,23,42,.08);}.dashboard-kpi-storyboard .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;}.dashboard-kpi-storyboard .storyboard-row{display:grid;grid-template-columns:1.4fr .8fr;gap:1rem;}.dashboard-kpi-storyboard .widget-card,.dashboard-kpi-storyboard .stat-card{padding:1rem;border-radius:1rem;background:#f8fafc;border:1px solid rgba(15,23,42,.08);}",
+      "html": "<section class=\"dashboard-kpi-storyboard\"><div class=\"section-heading\"><div><span class=\"section-kicker\">Signals</span><h2>Operational health at a glance</h2><p>Track quality, fallback pressure, retrieval coverage, and workflow throughput from one workspace block.</p></div></div><div class=\"stats-grid\"><article class=\"stat-card\"><span class=\"stat-card__eyebrow\">QEC</span><h3>0.81</h3><p>quality score</p></article><article class=\"stat-card\"><span class=\"stat-card__eyebrow\">Coverage</span><h3>78%</h3><p>major retrieved slots</p></article><article class=\"stat-card\"><span class=\"stat-card__eyebrow\">Fallback</span><h3>2</h3><p>active fallback slots</p></article><article class=\"stat-card\"><span class=\"stat-card__eyebrow\">Reviews</span><h3>14</h3><p>queued inspections</p></article></div><div class=\"storyboard-row\"><article class=\"widget-card\"><h3>Generation throughput</h3><p>Recent requests are becoming more section-led and less repetitive.</p></article><article class=\"widget-card\"><h3>Alert summary</h3><p>2 lexicon families need stronger section coverage.</p></article></div></section>",
+      "family": "status-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.docs-article-reference-section",
+      "category": "components",
+      "name": "Docs article reference section",
+      "semantic_description": "A complete documentation article section with title block, lead paragraph, subsection grouping, callout note, checklist, and code-friendly reading rhythm. Suitable for docs portals, technical guides, release notes hubs, and API references.",
+      "tags": [
+        "docs article",
+        "content body",
+        "technical guide",
+        "reference section",
+        "documentation page",
+        "article layout"
+      ],
+      "payload": "docs-article-reference-section full docs body",
+      "css": ".docs-article-reference{padding:2rem;border-radius:1.5rem;background:#fff;border:1px solid rgba(15,23,42,.08);display:grid;gap:1rem;}.docs-article-reference .docs-callout{padding:1rem;border-radius:1rem;background:#eff6ff;border:1px solid rgba(59,130,246,.16);}.docs-article-reference .docs-columns{display:grid;grid-template-columns:1.2fr .8fr;gap:1rem;}",
+      "html": "<article class=\"docs-article-reference\"><span class=\"section-kicker\">Implementation notes</span><h1>How section-first retrieval changes page quality</h1><p>Section-capable entries give the planner larger structural units, which improves bundle assembly and reduces fallback repetition across major slots.</p><div class=\"docs-callout\"><strong>Key point:</strong> retrieval quality is not just about semantic similarity. Structural usefulness matters too.</div><div class=\"docs-columns\"><div><h3>Recommended workflow</h3><p>Start from archetype classification, derive a slot plan, then retrieve section shells, support modules, and style layers.</p><h3>Checklist</h3><ul><li>Prefer section-level candidates</li><li>Audit noisy micro-fragments</li><li>Track fallback pressure</li></ul></div><div><h3>Debug focus</h3><p>Inspect base/layouts/sections/support bundle composition for each slot.</p></div></div></article>",
+      "family": "content-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.catalog-filter-rail-section",
+      "category": "components",
+      "name": "Catalog filter rail section",
+      "semantic_description": "A full catalog filter section with search input, sorting, facet groups, active chips, and compact browsing controls. Useful for product directories, design-pattern catalogs, marketplace browsing, and any faceted listing interface.",
+      "tags": [
+        "catalog filters",
+        "facet rail",
+        "search toolbar",
+        "active chips",
+        "sorting controls",
+        "browsing panel"
+      ],
+      "payload": "catalog-filter-rail-section full filter section",
+      "css": ".catalog-filter-rail{padding:1.5rem;border-radius:1.35rem;background:#fff;border:1px solid rgba(15,23,42,.08);display:grid;gap:1rem;}.catalog-filter-rail .chip-row{display:flex;flex-wrap:wrap;gap:.55rem;}.catalog-filter-rail .chip-row span{padding:.5rem .8rem;border-radius:999px;background:#ecfeff;border:1px solid rgba(8,145,178,.14);}.catalog-filter-rail .facet-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}",
+      "html": "<section class=\"catalog-filter-rail\"><div class=\"section-heading\"><div><span class=\"section-kicker\">Filter system</span><h2>Refine the catalog without losing context</h2><p>Search, sort, and narrow results using visual facets and active semantic chips.</p></div></div><div class=\"filters-bar\"><input class=\"filter-input\" placeholder=\"Search patterns, families, tokens\" /><button class=\"btn btn--ghost\">Sort by relevance</button><button class=\"btn btn--primary\">Apply filters</button></div><div class=\"chip-row\"><span>showcase-system</span><span>catalog-system</span><span>motion-ready</span><span>section-capable</span></div><div class=\"facet-grid\"><article class=\"widget-card\"><h3>Families</h3><p>8 active groups</p></article><article class=\"widget-card\"><h3>Density</h3><p>compact, balanced, airy</p></article><article class=\"widget-card\"><h3>Motion</h3><p>none, simple, medium</p></article></div></section>",
+      "family": "catalog-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
+    },
+    {
+      "id": "custom.components.catalog-list-showcase-section",
+      "category": "components",
+      "name": "Catalog list showcase section",
+      "semantic_description": "A full catalog listing section with six cards, metadata chips, action row, and comparison-ready card rhythm. Suitable for design pattern catalogs, component libraries, marketplaces, and retrieval result browsing pages.",
+      "tags": [
+        "catalog list",
+        "product grid",
+        "six cards",
+        "metadata chips",
+        "comparison cards",
+        "listing section"
+      ],
+      "payload": "catalog-list-showcase-section full listing grid",
+      "css": ".catalog-list-showcase{padding:2rem;border-radius:1.5rem;background:#fff;border:1px solid rgba(15,23,42,.08);}.catalog-list-showcase .catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}.catalog-list-showcase .catalog-card{padding:1rem;border-radius:1rem;background:#f8fafc;border:1px solid rgba(15,23,42,.08);display:grid;gap:.7rem;}.catalog-list-showcase .catalog-card .chip-row{display:flex;flex-wrap:wrap;gap:.4rem;}",
+      "html": "<section class=\"catalog-list-showcase\"><div class=\"section-heading\"><div><span class=\"section-kicker\">Curated results</span><h2>Browse section-ready UI patterns</h2><p>Compare families, inspect semantic tags, and shortlist blocks for generation.</p></div><a class=\"btn btn--ghost\" href=\"#\">Open inspector</a></div><div class=\"catalog-grid\"><article class=\"catalog-card\"><strong>Travel hero booking</strong><p>Rich landing opener with booking controls and side metrics.</p><div class=\"chip-row\"><span class=\"code-pill\">showcase-system</span><span class=\"code-pill\">hero</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article><article class=\"catalog-card\"><strong>KPI storyboard</strong><p>Dashboard stats and alert choreography for workspace overviews.</p><div class=\"chip-row\"><span class=\"code-pill\">status-system</span><span class=\"code-pill\">dashboard</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article><article class=\"catalog-card\"><strong>Docs article reference</strong><p>Technical article body with callout and reading rhythm.</p><div class=\"chip-row\"><span class=\"code-pill\">content-system</span><span class=\"code-pill\">docs</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article><article class=\"catalog-card\"><strong>Feature mosaic</strong><p>Six-card benefit comparison for product marketing pages.</p><div class=\"chip-row\"><span class=\"code-pill\">showcase-system</span><span class=\"code-pill\">features</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article><article class=\"catalog-card\"><strong>Filter rail</strong><p>Semantic browsing controls with chips and facet summaries.</p><div class=\"chip-row\"><span class=\"code-pill\">catalog-system</span><span class=\"code-pill\">filters</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article><article class=\"catalog-card\"><strong>Pricing grid</strong><p>Three-plan decision section with conversion-ready structure.</p><div class=\"chip-row\"><span class=\"code-pill\">showcase-system</span><span class=\"code-pill\">pricing</span></div><a class=\"btn btn--primary\" href=\"#\">Use section</a></article></div></section>",
+      "family": "catalog-system",
+      "conflicts": [],
+      "meta": {
+        "source": "curated-section-pack",
+        "priority": 6,
+        "entity_level": "section",
+        "section_capable": true
+      }
     }
   ]
 }

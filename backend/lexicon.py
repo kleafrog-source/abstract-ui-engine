@@ -33,6 +33,31 @@ MODIFIER_HINTS = (
     "spacing",
     "density",
 )
+LOW_VALUE_HINTS = (
+    "skeleton",
+    "empty state",
+    "loading state",
+    "placeholder",
+    "dummy",
+    "stub",
+    "command palette",
+    "toast",
+    "tooltip",
+    "badge",
+    "chip",
+)
+MICRO_FRAGMENT_HINTS = (
+    "button",
+    "badge",
+    "chip",
+    "pill",
+    "icon",
+    "avatar",
+    "toggle",
+    "switch",
+    "radio",
+    "checkbox",
+)
 
 
 def _slugify(value: str) -> str:
@@ -84,6 +109,10 @@ def normalize_entry(entry: dict[str, Any], category: str) -> dict[str, Any]:
     )
     meta.setdefault("enrichment_only", category in {"styles", "interactions", "utilities", "typography"})
     meta.setdefault("entity_level", _infer_entity_level(normalized, category))
+    meta.setdefault("section_richness", _section_richness(normalized))
+    meta.setdefault("low_value_fragment", _is_low_value_fragment(normalized))
+    meta.setdefault("micro_fragment", _is_micro_fragment(normalized))
+    meta.setdefault("retrieval_weight", _retrieval_weight(normalized, category))
     return normalized
 
 
@@ -140,12 +169,94 @@ def _looks_like_large_fragment(html_fragment: str, tags: set[str], semantic: str
     return any(tag in html_fragment for tag in ("<section", "<article", "<nav", "<aside", "<header", "<footer", "<main", "<table"))
 
 
+def _section_richness(entry: dict[str, Any]) -> float:
+    html_fragment = str(entry.get("html") or "").strip().lower()
+    if not html_fragment:
+        return 0.0
+
+    block_nodes = sum(html_fragment.count(token) for token in ("<section", "<article", "<nav", "<aside", "<header", "<footer", "<main", "<div", "<li"))
+    interactive_nodes = sum(html_fragment.count(token) for token in ("<button", "<a ", "<a>", "<input", "<select", "<textarea"))
+    heading_nodes = sum(html_fragment.count(token) for token in ("<h1", "<h2", "<h3", "<h4"))
+    text_length = len(re.sub(r"<[^>]+>", " ", html_fragment))
+
+    richness = 0.0
+    richness += min(0.35, block_nodes * 0.025)
+    richness += min(0.2, interactive_nodes * 0.04)
+    richness += min(0.18, heading_nodes * 0.06)
+    richness += min(0.27, text_length / 900)
+    return round(min(1.0, richness), 4)
+
+
+def _is_low_value_fragment(entry: dict[str, Any]) -> bool:
+    text = " ".join(
+        [
+            str(entry.get("name", "")).lower(),
+            str(entry.get("semantic_description", "")).lower(),
+            str(entry.get("payload", "")).lower(),
+            str(entry.get("html", "")).lower(),
+        ]
+    )
+    return any(token in text for token in LOW_VALUE_HINTS)
+
+
+def _is_micro_fragment(entry: dict[str, Any]) -> bool:
+    text = " ".join(
+        [
+            str(entry.get("name", "")).lower(),
+            str(entry.get("semantic_description", "")).lower(),
+            " ".join(str(tag).lower() for tag in entry.get("tags", [])),
+        ]
+    )
+    html_fragment = str(entry.get("html") or "").lower()
+    if any(token in text for token in MICRO_FRAGMENT_HINTS):
+        return True
+    if html_fragment.startswith("<button") or html_fragment.startswith("<a") or html_fragment.startswith("<span"):
+        return True
+    return False
+
+
+def _retrieval_weight(entry: dict[str, Any], category: str) -> float:
+    meta = entry.get("meta") or {}
+    entity_level = str(meta.get("entity_level") or "component")
+    richness = float(meta.get("section_richness") or 0.0)
+    low_value = bool(meta.get("low_value_fragment"))
+    micro_fragment = bool(meta.get("micro_fragment"))
+
+    weight = 1.0
+    if entity_level == "section":
+        weight += 0.12 + min(0.18, richness * 0.18)
+    elif entity_level == "component":
+        weight += min(0.06, richness * 0.06)
+    if category == "layouts":
+        weight += 0.06
+    if low_value:
+        weight -= 0.32
+    if micro_fragment and entity_level != "section":
+        weight -= 0.14
+    return round(max(0.25, min(1.4, weight)), 4)
+
+
 def lexicon_stats() -> dict[str, Any]:
     entries = load_lexicon()
     by_category: dict[str, int] = {}
+    quality = {
+        "sectionCapable": 0,
+        "lowValue": 0,
+        "microFragments": 0,
+        "richSections": 0,
+    }
     for entry in entries:
         by_category[entry["category"]] = by_category.get(entry["category"], 0) + 1
-    return {"total": len(entries), "byCategory": by_category, "loadedAt": _loaded_at}
+        meta = entry.get("meta") or {}
+        if meta.get("section_capable"):
+            quality["sectionCapable"] += 1
+        if meta.get("low_value_fragment"):
+            quality["lowValue"] += 1
+        if meta.get("micro_fragment"):
+            quality["microFragments"] += 1
+        if float(meta.get("section_richness") or 0.0) >= 0.4:
+            quality["richSections"] += 1
+    return {"total": len(entries), "byCategory": by_category, "quality": quality, "loadedAt": _loaded_at}
 
 
 def add_custom_entry(entry: dict[str, Any]) -> dict[str, Any]:

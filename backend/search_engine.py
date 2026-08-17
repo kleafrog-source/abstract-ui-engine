@@ -342,6 +342,12 @@ def _keyword_score(query: str, query_tokens: list[str], entry: dict[str, Any], m
     generic_matches = [token for token in matched if token in GENERIC_QUERY_TOKENS]
     specificity_bonus = min(0.14, len(specific_matches) * 0.035)
     generic_penalty = 0.0
+    meta = entry.get("meta") or {}
+    low_value_penalty = 0.0
+    if meta.get("low_value_fragment"):
+        low_value_penalty += 0.14 if not specific_matches else 0.08
+    if meta.get("micro_fragment") and str(meta.get("entity_level") or "component") != "section":
+        low_value_penalty += 0.06
     if generic_matches and not specific_matches:
         generic_penalty += min(0.16, len(generic_matches) * 0.03)
     if len(generic_matches) >= max(3, len(matched)) and len(specific_matches) <= 1:
@@ -356,7 +362,8 @@ def _keyword_score(query: str, query_tokens: list[str], entry: dict[str, Any], m
             + exact_token_bonus
             + query_hint_bonus
             + specificity_bonus
-            - generic_penalty,
+            - generic_penalty
+            - low_value_penalty,
         ),
     )
 
@@ -387,7 +394,12 @@ def search(
             continue
         matched = _matched_tokens(q_tokens, entry)
         keyword_score = _keyword_score(expanded_query, q_tokens, entry, matched)
-        score = alpha * cosine(q_vector, vector) + beta * keyword_score
+        meta = entry.get("meta") or {}
+        retrieval_weight = float(meta.get("retrieval_weight") or 1.0)
+        structural_bonus = 0.0
+        if str(meta.get("entity_level") or "component") == "section":
+            structural_bonus += min(0.08, float(meta.get("section_richness") or 0.0) * 0.08)
+        score = (alpha * cosine(q_vector, vector) + beta * keyword_score + structural_bonus) * retrieval_weight
         if locked and entry["id"] in locked:
             score = max(score, 0.9)
         hits.append(
@@ -430,6 +442,7 @@ def build_debug(query: str, hits: list[dict[str, Any]]) -> dict[str, Any]:
         "sourceDigest": index.get("sourceDigest"),
         "cache": cache_stats(),
         "lexiconStats": lexicon_stats()["byCategory"],
+        "lexiconQuality": lexicon_stats().get("quality", {}),
     }
 
 
