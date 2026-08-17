@@ -38,6 +38,14 @@ def text_hash(entry: dict[str, Any]) -> str:
     return hashlib.sha256(basis.encode("utf-8")).hexdigest()
 
 
+def lexicon_digest(entries: list[dict[str, Any]]) -> str:
+    payload = "||".join(
+        f"{entry['id']}:{text_hash(entry)}"
+        for entry in sorted(entries, key=lambda item: item["id"])
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 class EmbeddingProvider:
     kind: str
     dimension: int = EMBEDDING_DIM
@@ -188,6 +196,8 @@ class CacheBundle:
     dimension: int
     generated_at: str
     records: list[dict[str, Any]]
+    source_digest: str | None
+    version: int
 
 
 def load_embedding_cache() -> CacheBundle | None:
@@ -210,6 +220,8 @@ def load_embedding_cache() -> CacheBundle | None:
         dimension=payload["dimension"],
         generated_at=payload["generatedAt"],
         records=payload["records"],
+        source_digest=payload.get("sourceDigest"),
+        version=int(payload.get("version", 1)),
     )
 
 
@@ -230,6 +242,8 @@ def cache_stats() -> dict[str, Any]:
         "size": stat.st_size,
         "generatedAt": bundle.generated_at if bundle else None,
         "count": len(bundle.records) if bundle else 0,
+        "version": bundle.version if bundle else None,
+        "sourceDigest": bundle.source_digest if bundle else None,
     }
 
 
@@ -241,13 +255,15 @@ def invalidate_cache() -> None:
 def save_embedding_cache(
     records: list[dict[str, Any]],
     provider: str,
+    source_digest: str | None = None,
     dimension: int = EMBEDDING_DIM,
 ) -> dict[str, Any]:
     payload = {
-        "version": 1,
+        "version": 2,
         "provider": provider,
         "dimension": dimension,
         "generatedAt": datetime.now(UTC).isoformat(),
+        "sourceDigest": source_digest,
         "records": records,
     }
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
@@ -265,6 +281,7 @@ def build_embedding_cache(entries: list[dict[str, Any]]) -> dict[str, Any]:
     )
     CACHE_DIR.mkdir(parents=True, exist_ok=True)
     existing = load_embedding_cache()
+    current_digest = lexicon_digest(entries)
     existing_by_id = {}
     if existing:
         existing_by_id = {record["id"]: record for record in existing.records}
@@ -298,7 +315,7 @@ def build_embedding_cache(entries: list[dict[str, Any]]) -> dict[str, Any]:
         }
         for entry in entries
     ]
-    save_embedding_cache(records, resolved_kind, provider.dimension)
+    save_embedding_cache(records, resolved_kind, current_digest, provider.dimension)
 
     status = "fresh"
     if existing:
@@ -310,4 +327,6 @@ def build_embedding_cache(entries: list[dict[str, Any]]) -> dict[str, Any]:
         "total": len(entries),
         "embedded": embedded,
         "cached": len(entries) - embedded,
+        "sourceDigest": current_digest,
+        "cacheMatchesLexicon": True,
     }

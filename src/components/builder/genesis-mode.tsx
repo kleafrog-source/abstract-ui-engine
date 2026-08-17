@@ -3,7 +3,6 @@
 import * as React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
@@ -24,6 +23,14 @@ export function GenesisMode() {
   const {
     query,
     setQuery,
+    archetype,
+    setArchetype,
+    mediaStrategy,
+    setMediaStrategy,
+    animationMode,
+    setAnimationMode,
+    debugTips,
+    setDebugTips,
     temperature,
     setTemperature,
     run,
@@ -58,7 +65,6 @@ export function GenesisMode() {
 
   return (
     <div className="flex flex-col gap-3 p-3">
-      {/* Compact query bar */}
       <Card>
         <CardContent className="py-3">
           <div className="flex items-center gap-2">
@@ -69,6 +75,14 @@ export function GenesisMode() {
             <QueryBar
               query={query}
               onQuery={setQuery}
+              archetype={archetype}
+              onArchetype={setArchetype}
+              mediaStrategy={mediaStrategy}
+              onMediaStrategy={setMediaStrategy}
+              animationMode={animationMode}
+              onAnimationMode={setAnimationMode}
+              debugTips={debugTips}
+              onDebugTips={setDebugTips}
               temperature={temperature}
               onTemperature={setTemperature}
               onGenerate={() => run()}
@@ -92,12 +106,12 @@ export function GenesisMode() {
                     ) : (
                       <Download className="mr-1.5 h-3.5 w-3.5" />
                     )}
-                    <span className="hidden sm:inline">Export</span>
+                    <span className="hidden sm:inline">Save HTML</span>
                     <span className="sm:hidden">.html</span>
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  Export Standalone — self-contained .html (inline CSS + vanilla JS, no external deps)
+                  Export Standalone - self-contained .html (inline CSS + vanilla JS, no external deps)
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -106,7 +120,6 @@ export function GenesisMode() {
         </CardContent>
       </Card>
 
-      {/* Preview + metrics side by side on desktop */}
       <div className="grid grid-cols-1 gap-3 xl:grid-cols-12">
         <div className="xl:col-span-9">
           <div className="h-[calc(100vh-260px)] min-h-[420px]">
@@ -134,10 +147,12 @@ export function GenesisMode() {
               </p>
               <Separator />
               <div className="space-y-1">
-                <Row label="Provider" value={response?.result.provider ?? "—"} />
-                <Row label="Hits" value={response ? String(response.result.hits.length) : "—"} />
-                <Row label="Standalone" value={standalone ? `${(standalone.length / 1024).toFixed(1)} KB` : "—"} />
-                <Row label="Search time" value={response ? `${response.result.tookMs}ms` : "—"} />
+                <Row label="Provider" value={response?.result.provider ?? "-"} />
+                <Row label="Hits" value={response ? String(response.result.hits.length) : "-"} />
+                <Row label="Standalone" value={standalone ? `${(standalone.length / 1024).toFixed(1)} KB` : "-"} />
+                <Row label="Search time" value={response ? `${response.result.tookMs}ms` : "-"} />
+                <Row label="Media strategy" value={response?.mediaStrategy ?? "-"} />
+                <Row label="Motion" value={response?.designDirectives.motionLevel ?? "-"} />
               </div>
               <Button
                 onClick={handleExport}
@@ -150,7 +165,7 @@ export function GenesisMode() {
                 ) : (
                   <Download className="mr-1.5 h-3.5 w-3.5" />
                 )}
-                Export Standalone HTML
+                Save HTML
               </Button>
               {locked.length > 0 && (
                 <div className="flex items-center gap-1 text-[11px] text-primary">
@@ -169,7 +184,6 @@ export function GenesisMode() {
         </div>
       </div>
 
-      {/* Metrics strip on mobile */}
       <div className="xl:hidden">
         <div className="grid grid-cols-3 gap-2">
           <MiniMetric label="Coherence" value={metrics?.semanticCoherence} />
@@ -193,7 +207,7 @@ function Row({ label, value }: { label: string; value?: string }) {
 function MiniMetric({ label, value }: { label: string; value?: number }) {
   return (
     <div className="rounded-md border bg-card p-2 text-center">
-      <div className="text-lg font-semibold tabular-nums">{value ?? "—"}</div>
+      <div className="text-lg font-semibold tabular-nums">{value ?? "-"}</div>
       <div className="text-[10px] text-muted-foreground">{label}</div>
     </div>
   );

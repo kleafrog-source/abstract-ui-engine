@@ -14,6 +14,7 @@ from backend.embeddings import (
     AutoEmbeddingProvider,
     cache_stats,
     create_provider,
+    lexicon_digest,
     load_embedding_cache,
     save_embedding_cache,
     text_hash,
@@ -31,6 +32,7 @@ def chunked[T](items: list[T], size: int) -> Iterable[list[T]]:
 
 def main() -> None:
     entries = load_lexicon(force=True)
+    current_digest = lexicon_digest(entries)
     provider = create_provider()
     resolved_kind = (
         provider.resolved_kind
@@ -38,6 +40,7 @@ def main() -> None:
         else provider.kind
     )
     cache = load_embedding_cache()
+    cache_matches_lexicon = bool(cache and cache.source_digest == current_digest)
     cached_records = {
         record["id"]: record
         for record in (cache.records if cache else [])
@@ -67,6 +70,12 @@ def main() -> None:
         f"Found {reused} existing embeddings in cache. "
         f"Generating {len(pending)} new ones..."
     )
+    if cache:
+        status = "matches" if cache_matches_lexicon else "differs from"
+        print(
+            f"Cache fingerprint {status} current lexicon. "
+            f"cacheVersion={cache.version} cacheCount={len(cache.records)}"
+        )
 
     embedded = 0
     progress = tqdm(total=len(pending), desc="Embedding lexicon", unit="item")
@@ -87,6 +96,7 @@ def main() -> None:
                     save_embedding_cache(
                         build_records(entries, records_by_id),
                         resolved_kind,
+                        current_digest,
                         provider.dimension,
                     )
     finally:
@@ -95,6 +105,7 @@ def main() -> None:
     save_embedding_cache(
         build_records(entries, records_by_id),
         resolved_kind,
+        current_digest,
         provider.dimension,
     )
 

@@ -118,9 +118,9 @@ def start_frontend() -> subprocess.Popen[str] | None:
 
 def main() -> None:
     ensure_embeddings()
+    app = create_app()
     frontend = start_frontend()
     try:
-        app = create_app()
         app.run(host=FLASK_HOST, port=FLASK_PORT, debug=False, use_reloader=False)
     finally:
         if frontend and frontend.poll() is None:

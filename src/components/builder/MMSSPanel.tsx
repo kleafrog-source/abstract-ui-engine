@@ -137,8 +137,8 @@ export function MMSSPanel({
               <Stat label="Levels" value={metrics.details.N_levels} />
               <Stat label="Content" value={metrics.details.N_content} />
               <Stat label="Structure" value={metrics.details.N_structure} />
-              <Stat label="Unique classes" value={metrics.details.C_unique} />
-              <Stat label="Suspicious attrs" value={metrics.details.A_suspicious} />
+              <Stat label="Signal classes" value={metrics.details.C_unique} />
+              <Stat label="Noisy classes" value={metrics.details.C_noisy} />
             </div>
 
             <div className="space-y-2 rounded-lg border border-dashed p-3">
@@ -160,14 +160,14 @@ export function MMSSPanel({
                   note={`structure=${metrics.details.N_structure}`}
                 />
                 <DebugRow
-                  label="Class uniqueness"
+                  label="Class signal"
                   value={`${metrics.details.C_unique} / ${Math.max(metrics.details.C_total, 1)}`}
-                  note={`class tokens=${metrics.details.C_total}`}
+                  note={`signal=${metrics.details.C_unique}, raw unique=${metrics.details.C_raw_unique}, class tokens=${metrics.details.C_total}`}
                 />
                 <DebugRow
                   label="Suspicious attrs"
                   value={`${metrics.details.A_suspicious} / ${Math.max(metrics.details.A_total, 1)}`}
-                  note={`all attrs=${metrics.details.A_total}`}
+                  note={`noise attrs=${metrics.details.A_total}`}
                 />
                 <DebugRow
                   label="Fractal inputs"

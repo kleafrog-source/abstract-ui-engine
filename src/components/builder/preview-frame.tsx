@@ -25,7 +25,18 @@ export function PreviewFrame({
 }) {
   const [viewport, setViewport] = React.useState<Viewport>("desktop");
   const [reloadKey, setReloadKey] = React.useState(0);
-  const iframeRef = React.useRef<HTMLIFrameElement>(null);
+  const [previewUrl, setPreviewUrl] = React.useState("");
+
+  React.useEffect(() => {
+    if (!html) {
+      setPreviewUrl("");
+      return;
+    }
+    const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    setPreviewUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [html, reloadKey]);
 
   const openInNewTab = () => {
     const blob = new Blob([html], { type: "text/html" });
@@ -86,19 +97,22 @@ export function PreviewFrame({
               <RefreshCw className="mr-2 h-3.5 w-3.5 animate-spin" />
               Assembling page…
             </div>
+          ) : !previewUrl ? (
+            <div className="flex h-40 w-full items-center justify-center text-xs text-muted-foreground">
+              Generate a page to preview the current assembly.
+            </div>
           ) : (
             <iframe
               key={reloadKey}
-              ref={iframeRef}
               title={title}
-              srcDoc={html}
+              src={previewUrl}
               className="h-full rounded border bg-white shadow-sm transition-[width] duration-300"
               style={{
                 width: WIDTHS[viewport],
                 minHeight: "100%",
                 height: viewport === "desktop" ? "100%" : "100%",
               }}
-              sandbox="allow-scripts"
+              sandbox="allow-scripts allow-same-origin"
             />
           )}
         </div>

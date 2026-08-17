@@ -86,6 +86,7 @@ export interface SearchResult {
   temperature: number;
   hits: SearchHit[];
   tookMs: number;
+  retrievalQuery?: string;
 }
 
 /* ----------------------------- Assembly output --------------------------- */
@@ -139,11 +140,80 @@ export interface QualityMetrics {
 }
 
 export interface GenerateResponse {
+  archetype: "landing" | "dashboard" | "docs" | "catalog";
+  locale: "en" | "ru" | "mixed";
+  completeness: {
+    totalSlots: number;
+    majorSlots: number;
+    retrievedSlots: number;
+    fusedSlots: number;
+    fallbackSlots: number;
+    majorRetrievedSlots: number;
+    sectionFirstSlots: number;
+    warnings: string[];
+  };
+  mediaStrategy: "mobile-first" | "desktop-first";
+  designDirectives: {
+    randomFieldArea: boolean;
+    chaosLevel: "calm" | "dynamic" | "chaotic";
+    motionLevel: "none" | "simple" | "medium" | "complex";
+    matchedChaosTerms: string[];
+    surfaceEffects: string[];
+  };
+  constraints: Record<string, Record<string, number>>;
+  warnings: string[];
+  constraintValidation: {
+    valid: boolean;
+    slots: Record<string, Record<string, { expected: number; actual: number; valid: boolean } | boolean>>;
+    violations: string[];
+  };
+  plan: Array<{
+    slot: string;
+    source: "retrieved" | "retrieved_fused" | "fallback_parameterized" | "fallback_hybrid" | "fallback_static";
+    componentId: string | null;
+    constraints: Record<string, number>;
+    valid: boolean;
+    rejectedCandidates: Array<{ id: string; reason: string; detail?: string }>;
+    semanticTag: string;
+    sourceTokens: string[];
+    bundle: {
+      base: SlotBundleHit | null;
+      layouts: SlotBundleHit[];
+      sections: SlotBundleHit[];
+      support: SlotBundleHit[];
+      styles: SlotBundleHit[];
+      interactions: SlotBundleHit[];
+      supportTarget: string | null;
+      retrievalQuery?: string;
+      styleQuery?: string;
+      interactionQuery?: string;
+      expectedFamilies: string[];
+      baseFamily: string;
+      baseLevel: string;
+    };
+  }>;
   result: SearchResult;
   assembly: AssembledPage;
   metrics: QualityMetrics;
   debug: DebugInfo;
   mmss: import("@/types/mmss").MMSSMetrics;
+  semanticConfig?: Record<string, import("@/types/semantic-config").SemanticConfigValue>;
+  debugArtifacts?: {
+    generatedAt: string;
+    full: string;
+    summary: string;
+  };
+}
+
+export interface SlotBundleHit {
+  id?: string;
+  category?: string;
+  name?: string;
+  family?: string;
+  level?: string;
+  sectionCapable?: boolean;
+  score?: number;
+  matchedTokens?: string[];
 }
 
 export interface DebugInfo {

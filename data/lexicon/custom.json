@@ -1,0 +1,571 @@
+{
+  "category": "components",
+  "version": "1.0.0",
+  "count": 24,
+  "entries": [
+    {
+      "id": "custom.components.glass-hover-reveal-card",
+      "category": "components",
+      "name": "Glass hover reveal card",
+      "semantic_description": "A glassmorphism card with translucent surface, backdrop blur, elevated edge glow, and delayed content reveal on hover. Useful for premium dashboards, feature grids, pattern catalogues, and AI product showcases where the card should feel layered, polished, and slightly atmospheric rather than flat.",
+      "tags": [
+        "glass card",
+        "glassmorphism",
+        "hover reveal",
+        "translucent panel",
+        "feature card",
+        "premium surface"
+      ],
+      "payload": "glass-hover-reveal-card premium translucent tile",
+      "css": ".glass-hover-reveal-card{position:relative;overflow:hidden;padding:1.25rem;border-radius:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.12));border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(18px);box-shadow:0 20px 50px rgba(15,23,42,.12);transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;}.glass-hover-reveal-card .reveal-copy{opacity:.72;transform:translateY(10px);transition:opacity .28s ease .04s,transform .28s ease .04s;}.glass-hover-reveal-card:hover{transform:translateY(-4px);box-shadow:0 28px 60px rgba(15,23,42,.18);border-color:rgba(255,255,255,.42);}.glass-hover-reveal-card:hover .reveal-copy{opacity:1;transform:none;}",
+      "html": "<article class=\"glass-hover-reveal-card\"><h3>Glass layer</h3><p class=\"reveal-copy\">Hover to reveal richer supporting detail.</p></article>",
+      "family": "glassmorphism",
+      "conflicts": [
+        "component:card"
+      ],
+      "meta": {
+        "source": "web-strategist raWMqQO",
+        "priority": 4
+      }
+    },
+    {
+      "id": "custom.components.pulse-icon-action-button",
+      "category": "components",
+      "name": "Pulse icon action button",
+      "semantic_description": "An action button with a pulsing shadow aura, rotating or shifting icon, and coordinated color transition across background, text, and border. Good for hero actions, AI tool launch buttons, and strong call-to-action areas that need a lively but controlled interaction signal.",
+      "tags": [
+        "button",
+        "pulse shadow",
+        "rotating icon",
+        "cta",
+        "hover animation",
+        "action button"
+      ],
+      "payload": "pulse-icon-action-button animated cta",
+      "css": ".pulse-icon-action-button{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 1.15rem;border-radius:999px;background:linear-gradient(135deg,#111827,#1f2937);color:#fff;transition:transform .22s ease,box-shadow .22s ease,background-color .22s ease;box-shadow:0 0 0 rgba(34,211,238,0);}.pulse-icon-action-button .icon{display:inline-block;transition:transform .22s ease,color .22s ease;}.pulse-icon-action-button:hover{transform:translateY(-2px);box-shadow:0 0 0 8px rgba(34,211,238,.08),0 18px 38px rgba(17,24,39,.22);background:linear-gradient(135deg,#0f172a,#164e63);}.pulse-icon-action-button:hover .icon{transform:rotate(18deg) scale(1.08);color:#67e8f9;}",
+      "html": "<button class=\"pulse-icon-action-button\"><span>Generate</span><span class=\"icon\" aria-hidden=\"true\">✦</span></button>",
+      "accessibility": {
+        "contrastRatio": 7.4,
+        "aria": [
+          "role=button",
+          "aria-label=Generate"
+        ],
+        "focusVisible": true
+      },
+      "family": "neo-gradient",
+      "conflicts": [
+        "component:button"
+      ],
+      "meta": {
+        "source": "web-strategist MYJrOmX",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.loading-dots-stagger",
+      "category": "components",
+      "name": "Loading dots stagger",
+      "semantic_description": "A compact loading indicator made of staggered dots that pulse, jump, or breathe in sequence using animation-delay. Useful for inline async states, semantic search loading, progressive generation, and compact status surfaces where a spinner would feel too heavy.",
+      "tags": [
+        "loading",
+        "dots",
+        "stagger",
+        "pulse",
+        "async indicator",
+        "micro feedback"
+      ],
+      "payload": "loading-dots-stagger compact async indicator",
+      "css": ".loading-dots-stagger{display:inline-flex;align-items:center;gap:.35rem;}.loading-dots-stagger span{width:.5rem;height:.5rem;border-radius:999px;background:currentColor;opacity:.35;animation:loading-dots-stagger 900ms ease-in-out infinite;}.loading-dots-stagger span:nth-child(2){animation-delay:120ms;}.loading-dots-stagger span:nth-child(3){animation-delay:240ms;}@keyframes loading-dots-stagger{0%,80%,100%{transform:translateY(0) scale(.88);opacity:.35;}40%{transform:translateY(-4px) scale(1);opacity:1;}}",
+      "html": "<div class=\"loading-dots-stagger\" aria-label=\"Loading\"><span></span><span></span><span></span></div>",
+      "family": "status-system",
+      "conflicts": [
+        "component:loading"
+      ],
+      "meta": {
+        "source": "web-strategist zxNEbxX",
+        "priority": 4
+      }
+    },
+    {
+      "id": "custom.components.stagger-grid-feature-cards",
+      "category": "components",
+      "name": "Stagger grid feature cards",
+      "semantic_description": "A feature-card grid where each card enters with a slight stagger delay and lifts on hover. Intended for capability galleries, pricing comparisons, dashboards, and pattern browsers where repeating cards should feel orchestrated rather than dumped at once.",
+      "tags": [
+        "card grid",
+        "stagger reveal",
+        "feature cards",
+        "hover lift",
+        "capability gallery",
+        "grid cards"
+      ],
+      "payload": "stagger-grid-feature-cards orchestrated card wall",
+      "css": ".stagger-grid-feature-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;}.stagger-grid-feature-cards > article{opacity:0;transform:translateY(18px) scale(.98);animation:stagger-grid-card .46s ease forwards;transition:transform .22s ease,box-shadow .22s ease;}.stagger-grid-feature-cards > article:nth-child(2){animation-delay:80ms;}.stagger-grid-feature-cards > article:nth-child(3){animation-delay:160ms;}.stagger-grid-feature-cards > article:nth-child(4){animation-delay:240ms;}.stagger-grid-feature-cards > article:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.12);}@keyframes stagger-grid-card{to{opacity:1;transform:none;}}",
+      "responsive": {
+        "mobile": ".stagger-grid-feature-cards{grid-template-columns:1fr;}",
+        "tablet": ".stagger-grid-feature-cards{grid-template-columns:repeat(2,minmax(0,1fr));}",
+        "desktop": ".stagger-grid-feature-cards{grid-template-columns:repeat(3,minmax(0,1fr));}"
+      },
+      "family": "showcase-system",
+      "conflicts": [
+        "component:card-grid"
+      ],
+      "meta": {
+        "source": "maxchu2021 wvVRoBb",
+        "priority": 4
+      }
+    },
+    {
+      "id": "custom.interactions.pointer-starfield-depth",
+      "category": "interactions",
+      "name": "Pointer starfield depth",
+      "semantic_description": "A pointer-reactive depth field made of layered particles or stars moving at different rates to simulate parallax in a 3D scene. Best for hero backdrops, tech showcases, experimental intros, and decorative but controllable ambient canvases.",
+      "tags": [
+        "starfield",
+        "particles",
+        "pointer parallax",
+        "depth field",
+        "3d ambient",
+        "hero background"
+      ],
+      "payload": "pointer-starfield-depth layered particle parallax",
+      "js": "document.querySelectorAll('[data-starfield-depth]').forEach((root)=>{const layers=[...root.querySelectorAll('[data-depth-layer]')];root.addEventListener('mousemove',(event)=>{const rect=root.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width-.5;const y=(event.clientY-rect.top)/rect.height-.5;layers.forEach((layer,index)=>{const depth=Number(layer.getAttribute('data-depth-layer'))||index+1;layer.style.transform=`translate3d(${x*depth*14}px,${y*depth*14}px,0)`;});});root.addEventListener('mouseleave',()=>layers.forEach((layer)=>{layer.style.transform='';}));});",
+      "family": "ambient-motion",
+      "conflicts": [],
+      "meta": {
+        "source": "0xdracarys xxmJKGJ",
+        "priority": 4
+      }
+    },
+    {
+      "id": "custom.interactions.svg-path-draw-sequence",
+      "category": "interactions",
+      "name": "SVG path draw sequence",
+      "semantic_description": "An SVG path drawing sequence where strokes animate into view using dash offset, optionally followed by fill reveal or secondary motion. Useful for logo intros, diagram emphasis, feature illustrations, and branded onboarding moments.",
+      "tags": [
+        "svg",
+        "path draw",
+        "stroke dashoffset",
+        "logo animation",
+        "line drawing",
+        "illustration reveal"
+      ],
+      "payload": "svg-path-draw-sequence animated line reveal",
+      "css": ".svg-path-draw-sequence path{stroke-dasharray:var(--path-length,240);stroke-dashoffset:var(--path-length,240);animation:svg-path-draw 1.2s ease forwards;}@keyframes svg-path-draw{to{stroke-dashoffset:0;}}",
+      "js": "document.querySelectorAll('[data-svg-path-draw] path').forEach((path)=>{const length=Math.ceil(path.getTotalLength());path.style.setProperty('--path-length',String(length));});",
+      "family": "illustration-motion",
+      "conflicts": [],
+      "meta": {
+        "source": "roberto3000 vEgMwee",
+        "priority": 4
+      }
+    },
+    {
+      "id": "custom.typography.marker-syntax-highlight",
+      "category": "typography",
+      "name": "Marker syntax highlight",
+      "semantic_description": "A marker-like text highlight treatment for semantic phrases, code-inspired callouts, and poetic annotations. Uses an angled painted background, slight inline padding, and a hand-marked emphasis rather than a flat rectangular tag. Suitable for editorial hero copy, annotated interfaces, and text-led experimental layouts.",
+      "tags": [
+        "marker",
+        "highlight",
+        "annotated text",
+        "editorial emphasis",
+        "inline accent",
+        "paint stroke"
+      ],
+      "payload": "marker-syntax-highlight inline text emphasis",
+      "css": ".marker-syntax-highlight{display:inline;padding:0 .2em;background:linear-gradient(176deg,transparent 8%,rgba(255,230,120,.18) 8%,rgba(255,230,120,.82) 76%,transparent 76%);box-decoration-break:clone;-webkit-box-decoration-break:clone;}",
+      "family": "editorial-expressive",
+      "conflicts": [
+        "text-effect:highlight-marker"
+      ],
+      "meta": {
+        "source": "datapoems.io syntax marker",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.interactions.progressive-text-reveal",
+      "category": "interactions",
+      "name": "Progressive text reveal",
+      "semantic_description": "A progressive character or token reveal interaction for text-first interfaces. Supports staged output, reading rhythm, and semantic emphasis as letters or words fade in over time. Useful for poetic UI, prompt demos, landing hero copy, and guided narrative blocks.",
+      "tags": [
+        "typewriter",
+        "text reveal",
+        "staggered letters",
+        "narrative motion",
+        "character animation",
+        "semantic text"
+      ],
+      "payload": "progressive-text-reveal staggered copy output",
+      "js": "document.querySelectorAll('[data-progressive-text]').forEach((el)=>{const raw=el.textContent||'';const units=raw.split('');el.textContent='';units.forEach((ch,index)=>{const span=document.createElement('span');span.textContent=ch;span.style.opacity='0';span.style.transform='translateY(0.25em)';span.style.transition='opacity .28s ease, transform .28s ease';el.appendChild(span);window.setTimeout(()=>{span.style.opacity='1';span.style.transform='translateY(0)';},index*22);});});",
+      "family": "text-lab",
+      "conflicts": [],
+      "meta": {
+        "source": "datapoems.io syntax marker",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.interactions.glyph-mouse-reactive",
+      "category": "interactions",
+      "name": "Glyph mouse reactive",
+      "semantic_description": "A split-text interaction where individual glyphs react to pointer position with local rotation, scale, or offset. Designed for experimental hero typography and expressive headings where letters feel alive but remain readable. Strong fit for showcase pages and interactive headline systems.",
+      "tags": [
+        "split text",
+        "glyph motion",
+        "mousemove",
+        "reactive letters",
+        "interactive typography",
+        "hero headline"
+      ],
+      "payload": "glyph-mouse-reactive split heading letters",
+      "js": "document.querySelectorAll('[data-glyph-reactive]').forEach((root)=>{const text=root.textContent||'';root.textContent='';[...text].forEach((char)=>{const span=document.createElement('span');span.textContent=char;span.style.display='inline-block';span.style.transition='transform .18s ease';root.appendChild(span);});const letters=[...root.children];root.addEventListener('mousemove',(event)=>{const box=root.getBoundingClientRect();letters.forEach((letter,index)=>{const rect=letter.getBoundingClientRect();const dx=event.clientX-(rect.left+rect.width/2);const dy=event.clientY-(rect.top+rect.height/2);const rotate=Math.max(-10,Math.min(10,dx*0.12));const lift=Math.max(-8,Math.min(8,-dy*0.08));letter.style.transform=`translateY(${lift}px) rotate(${rotate}deg) scale(${1+(index%3)*0.02})`;});});root.addEventListener('mouseleave',()=>letters.forEach((letter)=>{letter.style.transform='';}));});",
+      "family": "text-lab",
+      "conflicts": [],
+      "meta": {
+        "source": "Abstract-Mindfreak bNgyZXV",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.layouts.hybrid-grid-flex-clamp",
+      "category": "layouts",
+      "name": "Hybrid grid flex clamp layout",
+      "semantic_description": "A hybrid editorial layout that combines CSS grid for macro structure and flex for local alignment. Uses clamp-based spacing and fluid viewport sizing, aspect-ratio media boxes, and responsive containers that stay balanced across desktop, tablet, and tall mobile viewports. Good for showcase pages, design catalogues, and experimental dashboards.",
+      "tags": [
+        "grid",
+        "flex",
+        "clamp",
+        "aspect-ratio",
+        "fluid layout",
+        "editorial grid"
+      ],
+      "payload": "hybrid-grid-flex-clamp editorial shell",
+      "css": ".hybrid-grid-flex-clamp{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(18rem,.8fr);gap:clamp(1rem,2vw,2rem);align-items:start;}.hybrid-grid-flex-clamp > .stack{display:flex;flex-direction:column;gap:clamp(.75rem,1.2vw,1.5rem);}.hybrid-grid-flex-clamp .media-box{aspect-ratio:4/3;min-height:min(48vh,32rem);}",
+      "responsive": {
+        "mobile": ".hybrid-grid-flex-clamp{grid-template-columns:1fr;}.hybrid-grid-flex-clamp .media-box{aspect-ratio:3/4;min-height:18rem;}",
+        "tablet": ".hybrid-grid-flex-clamp{grid-template-columns:minmax(0,1fr) minmax(14rem,.72fr);}",
+        "desktop": ".hybrid-grid-flex-clamp{grid-template-columns:minmax(0,1.25fr) minmax(20rem,.75fr);}"
+      },
+      "family": "editorial-expressive",
+      "conflicts": [],
+      "meta": {
+        "source": "sturobson hybrid grid flex",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.interactions.scroll-reveal-progress",
+      "category": "interactions",
+      "name": "Scroll reveal with progress bar",
+      "semantic_description": "A scroll-triggered visibility system that reveals sections as they enter the viewport while also updating a reading or progression bar. Combines Intersection Observer for activation with a lightweight scroll progress indicator. Useful for long landing pages, docs, and presentation-style pages.",
+      "tags": [
+        "scroll reveal",
+        "intersection observer",
+        "progress bar",
+        "parallax-ready",
+        "section animation",
+        "reading progress"
+      ],
+      "payload": "scroll-reveal-progress observer with page progress",
+      "css": ".scroll-reveal-progress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:linear-gradient(90deg,var(--color-accent,#111827),transparent);z-index:50;}.is-reveal-pending{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease;}.is-revealed{opacity:1;transform:none;}",
+      "js": "const progress=document.querySelector('[data-scroll-progress]');if(progress){const update=()=>{const doc=document.documentElement;const max=doc.scrollHeight-window.innerHeight;const ratio=max>0?window.scrollY/max:0;progress.style.width=(ratio*100).toFixed(2)+'%';};window.addEventListener('scroll',update,{passive:true});update();}const revealObserver=new IntersectionObserver((entries)=>{entries.forEach((entry)=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');entry.target.classList.remove('is-reveal-pending');revealObserver.unobserve(entry.target);}});},{threshold:.18,rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('[data-reveal-section]').forEach((el)=>{el.classList.add('is-reveal-pending');revealObserver.observe(el);});",
+      "family": "motion-system",
+      "conflicts": [],
+      "meta": {
+        "source": "lukeslp qERMPEv",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.gradient-outline-icon-button",
+      "category": "components",
+      "name": "Gradient outline icon button",
+      "semantic_description": "A call-to-action button with an animated gradient outline, masked border treatment, and a secondary icon that can rotate or shift on hover. Strong fit for premium landing pages, AI product heroes, and bold marketing CTAs where the button should feel active before click.",
+      "tags": [
+        "button",
+        "gradient outline",
+        "icon hover",
+        "mask border",
+        "premium cta",
+        "animated border"
+      ],
+      "payload": "gradient-outline-icon-button premium cta",
+      "css": ".gradient-outline-icon-button{position:relative;display:inline-flex;align-items:center;gap:.65rem;padding:.9rem 1.2rem;border-radius:999px;background:rgba(17,24,39,.88);color:#fff;overflow:hidden;transition:transform .24s ease,box-shadow .24s ease;}.gradient-outline-icon-button::before{content:'';position:absolute;inset:0;padding:1.5px;border-radius:inherit;background:linear-gradient(120deg,#7c3aed,#22d3ee,#f59e0b);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;}.gradient-outline-icon-button:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(124,58,237,.26);}.gradient-outline-icon-button .icon{transition:transform .24s ease;}.gradient-outline-icon-button:hover .icon{transform:rotate(18deg) translateX(2px);}",
+      "html": "<button class=\"gradient-outline-icon-button\"><span>Launch flow</span><span class=\"icon\" aria-hidden=\"true\">↗</span></button>",
+      "accessibility": {
+        "contrastRatio": 6.8,
+        "aria": [
+          "role=button",
+          "aria-label=Launch flow"
+        ],
+        "focusVisible": true
+      },
+      "family": "neo-gradient",
+      "conflicts": [
+        "component:button"
+      ],
+      "meta": {
+        "source": "web-strategist vEgrXBq",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.snap-slider-carousel",
+      "category": "components",
+      "name": "Snap slider carousel",
+      "semantic_description": "A horizontally scrolling slider or carousel with scroll snapping, motion-aware navigation controls, and animated pagination dots. Designed for showcases, product rails, and testimonial groups where touch scrolling should feel native and button navigation should remain available.",
+      "tags": [
+        "carousel",
+        "slider",
+        "scroll snap",
+        "dots",
+        "horizontal rail",
+        "touch friendly"
+      ],
+      "payload": "snap-slider-carousel scroll-snap rail",
+      "css": ".snap-slider-carousel{display:grid;gap:1rem;}.snap-slider-carousel .track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(16rem,1fr);gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}.snap-slider-carousel .track::-webkit-scrollbar{display:none;}.snap-slider-carousel .slide{scroll-snap-align:start;}.snap-slider-carousel .dots{display:flex;gap:.45rem;align-items:center;justify-content:center;}.snap-slider-carousel .dot{width:.55rem;height:.55rem;border-radius:999px;background:rgba(15,23,42,.2);transition:transform .2s ease,background-color .2s ease;}.snap-slider-carousel .dot.is-active{background:var(--color-accent,#111827);transform:scale(1.22);}",
+      "html": "<section class=\"snap-slider-carousel\" data-carousel><div class=\"track\" data-carousel-track><article class=\"slide\">Slide 1</article><article class=\"slide\">Slide 2</article><article class=\"slide\">Slide 3</article></div><div class=\"dots\" data-carousel-dots><button class=\"dot is-active\" aria-label=\"Slide 1\"></button><button class=\"dot\" aria-label=\"Slide 2\"></button><button class=\"dot\" aria-label=\"Slide 3\"></button></div></section>",
+      "js": "document.querySelectorAll('[data-carousel]').forEach((root)=>{const track=root.querySelector('[data-carousel-track]');const dots=[...root.querySelectorAll('.dot')];if(!track||!dots.length)return;const sync=()=>{const width=track.firstElementChild?.getBoundingClientRect().width||1;const gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap||'0');const index=Math.round(track.scrollLeft/(width+gap));dots.forEach((dot,i)=>dot.classList.toggle('is-active',i===index));};track.addEventListener('scroll',()=>window.requestAnimationFrame(sync),{passive:true});dots.forEach((dot,index)=>dot.addEventListener('click',()=>{const target=track.children[index];target?.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'});}));sync();});",
+      "accessibility": {
+        "contrastRatio": 4.9,
+        "aria": [
+          "aria-roledescription=carousel",
+          "aria-label=Content slider"
+        ],
+        "focusVisible": true
+      },
+      "family": "showcase-system",
+      "conflicts": [
+        "component:carousel"
+      ],
+      "meta": {
+        "source": "web-strategist RNKyaqB",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.burger-drawer-menu",
+      "category": "components",
+      "name": "Burger drawer menu",
+      "semantic_description": "A compact mobile navigation control where the three-line burger icon morphs into a close icon while a side panel slides in over a dimmed backdrop. Built for app shells, responsive marketing pages, and catalog views that need an off-canvas menu without a heavy framework.",
+      "tags": [
+        "burger",
+        "drawer menu",
+        "off canvas",
+        "mobile nav",
+        "overlay",
+        "morph icon"
+      ],
+      "payload": "burger-drawer-menu off-canvas mobile navigation",
+      "css": ".burger-drawer-menu .burger{display:inline-grid;gap:4px;padding:0;border:0;background:transparent;}.burger-drawer-menu .burger span{width:22px;height:2px;border-radius:999px;background:currentColor;transition:transform .24s ease,opacity .24s ease;}.burger-drawer-menu.is-open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg);}.burger-drawer-menu.is-open .burger span:nth-child(2){opacity:0;}.burger-drawer-menu.is-open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}.burger-drawer-menu .backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .24s ease;}.burger-drawer-menu .panel{position:fixed;top:0;right:0;height:100vh;width:min(24rem,86vw);padding:1.25rem;background:#fff;transform:translateX(100%);transition:transform .28s cubic-bezier(.22,1,.36,1);}.burger-drawer-menu.is-open .backdrop{opacity:1;pointer-events:auto;}.burger-drawer-menu.is-open .panel{transform:translateX(0);}",
+      "html": "<nav class=\"burger-drawer-menu\" data-drawer-menu><button class=\"burger\" data-drawer-trigger aria-expanded=\"false\" aria-label=\"Open menu\"><span></span><span></span><span></span></button><div class=\"backdrop\" data-drawer-backdrop></div><aside class=\"panel\"><a href=\"#\">Overview</a><a href=\"#\">Library</a><a href=\"#\">Settings</a></aside></nav>",
+      "js": "document.querySelectorAll('[data-drawer-menu]').forEach((root)=>{const trigger=root.querySelector('[data-drawer-trigger]');const backdrop=root.querySelector('[data-drawer-backdrop]');if(!trigger)return;const close=()=>{root.classList.remove('is-open');trigger.setAttribute('aria-expanded','false');};const open=()=>{root.classList.add('is-open');trigger.setAttribute('aria-expanded','true');};trigger.addEventListener('click',()=>root.classList.contains('is-open')?close():open());backdrop?.addEventListener('click',close);document.addEventListener('keydown',(event)=>{if(event.key==='Escape'&&root.classList.contains('is-open'))close();});});",
+      "accessibility": {
+        "contrastRatio": 7.1,
+        "aria": [
+          "aria-expanded",
+          "aria-label=Open menu"
+        ],
+        "focusVisible": true
+      },
+      "family": "nav-system",
+      "conflicts": [
+        "component:navigation",
+        "component:drawer"
+      ],
+      "meta": {
+        "source": "web-strategist rajyoOv",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.accordion-chevron-smooth",
+      "category": "components",
+      "name": "Accordion chevron smooth",
+      "semantic_description": "A disclosure or accordion component with smooth height expansion, a rotating chevron indicator, and a clear active state. Suitable for FAQs, settings groups, semantic detail panes, and documentation pages where compact disclosure matters.",
+      "tags": [
+        "accordion",
+        "disclosure",
+        "faq",
+        "chevron",
+        "expand collapse",
+        "detail panel"
+      ],
+      "payload": "accordion-chevron-smooth disclosure stack",
+      "css": ".accordion-chevron-smooth [data-accordion-trigger]{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;}.accordion-chevron-smooth [data-accordion-panel]{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s ease;}.accordion-chevron-smooth [data-accordion-panel] > div{overflow:hidden;}.accordion-chevron-smooth [data-accordion-trigger] .chevron{transition:transform .24s ease;}.accordion-chevron-smooth.is-open [data-accordion-panel]{grid-template-rows:1fr;}.accordion-chevron-smooth.is-open [data-accordion-trigger] .chevron{transform:rotate(180deg);}",
+      "html": "<section class=\"accordion-chevron-smooth\" data-accordion><button data-accordion-trigger aria-expanded=\"false\"><span>Details</span><span class=\"chevron\" aria-hidden=\"true\">⌄</span></button><div data-accordion-panel><div><p>Expanded content</p></div></div></section>",
+      "js": "document.querySelectorAll('[data-accordion]').forEach((item)=>{const trigger=item.querySelector('[data-accordion-trigger]');if(!trigger)return;trigger.addEventListener('click',()=>{const expanded=trigger.getAttribute('aria-expanded')==='true';trigger.setAttribute('aria-expanded',String(!expanded));item.classList.toggle('is-open',!expanded);});});",
+      "accessibility": {
+        "contrastRatio": 5.4,
+        "aria": [
+          "aria-expanded",
+          "aria-controls"
+        ],
+        "focusVisible": true
+      },
+      "family": "content-system",
+      "conflicts": [
+        "component:accordion"
+      ],
+      "meta": {
+        "source": "web-strategist jEVqgEZ",
+        "priority": 5
+      }
+    },
+    {
+      "id": "custom.components.catalog-filter-rail",
+      "category": "components",
+      "name": "Catalog filter rail",
+      "semantic_description": "A retrieval-friendly filter rail for catalog browsing with search input, category facets, semantic tags, and apply or reset actions for pattern libraries and UI inventories.",
+      "tags": [
+        "catalog",
+        "filter rail",
+        "facets",
+        "search input",
+        "toolbar",
+        "semantic browsing"
+      ],
+      "payload": "catalog-filter-rail semantic facets search chips",
+      "family": "catalog-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.components.catalog-list-grid",
+      "category": "components",
+      "name": "Catalog list grid",
+      "semantic_description": "A dense catalog card grid for browsing reusable components, styles, interactions, and utilities with score badges, family labels, payload previews, and matched semantic tokens.",
+      "tags": [
+        "catalog list",
+        "card grid",
+        "semantic hits",
+        "component library",
+        "payload preview",
+        "retrieval"
+      ],
+      "payload": "catalog-list-grid scored cards payload preview semantic hit list",
+      "family": "catalog-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.components.catalog-detail-inspector",
+      "category": "components",
+      "name": "Catalog detail inspector",
+      "semantic_description": "A focused detail inspector panel for a selected catalog entry showing semantic description, matched tokens, family, category, payload preview, and motion or debug metadata.",
+      "tags": [
+        "catalog detail",
+        "inspector",
+        "preview panel",
+        "semantic metadata",
+        "selection detail"
+      ],
+      "payload": "catalog-detail-inspector metadata preview panel",
+      "family": "catalog-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.utilities.catalog-badge-taxonomy",
+      "category": "utilities",
+      "name": "Catalog badge taxonomy",
+      "semantic_description": "Utility pattern for compact taxonomy badges used in catalog browsing: categories, tokens, families, confidence labels, and semantic facets.",
+      "tags": [
+        "badges",
+        "taxonomy",
+        "facets",
+        "tokens",
+        "catalog utility"
+      ],
+      "payload": "catalog-badge-taxonomy compact facet chips",
+      "family": "catalog-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.styles.catalog-inspector-surface",
+      "category": "styles",
+      "name": "Catalog inspector surface",
+      "semantic_description": "A clean layered inspector surface style for semantic browsing panels with restrained contrast, metadata rows, pill badges, and readable payload previews.",
+      "tags": [
+        "catalog style",
+        "inspector surface",
+        "metadata panel",
+        "payload preview"
+      ],
+      "payload": "catalog-inspector-surface layered metadata panel",
+      "css": ".catalog-card,.catalog-detail-section .widget-card{backdrop-filter:blur(10px);}",
+      "family": "catalog-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.styles.random-field-area",
+      "category": "styles",
+      "name": "Random field area",
+      "semantic_description": "A controlled chaotic surface with offset cards, mixed gradients, overlay textures, and dynamic spatial variation across repeated blocks.",
+      "tags": [
+        "random",
+        "chaos",
+        "dynamic",
+        "mixed",
+        "overlays",
+        "textures",
+        "patterns"
+      ],
+      "payload": "random-field-area",
+      "css": ".feature-card,.widget-card,.testimonial-card{will-change:transform;}",
+      "family": "experimental-chaos",
+      "conflicts": []
+    },
+    {
+      "id": "custom.styles.offset-stack",
+      "category": "styles",
+      "name": "Offset stack depth",
+      "semantic_description": "Stacked depth effect with visible z-index layering, slight rotation, and gravity-like offset across cards and panels.",
+      "tags": [
+        "z-index",
+        "gravity",
+        "rolled",
+        "stack",
+        "depth"
+      ],
+      "payload": "offset-stack-depth",
+      "css": ".hero-panel__card,.pricing-card,.stat-card{position:relative;}",
+      "family": "experimental-chaos",
+      "conflicts": []
+    },
+    {
+      "id": "custom.interactions.motion-stagger-medium",
+      "category": "interactions",
+      "name": "Motion stagger medium",
+      "semantic_description": "A medium animation preset with staggered reveal, soft rise, and responsive motion emphasis for page sections.",
+      "tags": [
+        "animation",
+        "motion",
+        "medium",
+        "staggered",
+        "reveal",
+        "transition"
+      ],
+      "payload": "motion-stagger-medium",
+      "js": "",
+      "family": "motion-system",
+      "conflicts": []
+    },
+    {
+      "id": "custom.interactions.motion-stagger-complex",
+      "category": "interactions",
+      "name": "Motion stagger complex",
+      "semantic_description": "A complex animation preset with longer sequencing, richer reveal cadence, and strong visual choreography between sections.",
+      "tags": [
+        "complex animation",
+        "complex motion",
+        "cinematic",
+        "rich motion",
+        "animated sequence"
+      ],
+      "payload": "motion-stagger-complex",
+      "js": "",
+      "family": "motion-system",
+      "conflicts": []
+    }
+  ]
+}

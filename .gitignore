@@ -59,5 +59,7 @@ db/custom.db
 __pycache__/
 **/__pycache__/
 trim_lexicon.py
+tasks_and_tasks_parts/
 # Skills directory
 /skills/
+backend/debug_results/

@@ -1,0 +1,400 @@
+{
+  "mmss_parameters": [
+    {
+      "id": "usability_score",
+      "name_en": "Usability Score",
+      "name_ru": "Оценка удобства",
+      "description_en": "Overall usability rating based on accessibility, navigation clarity, and readability. Higher values indicate better user experience.",
+      "description_ru": "Общая оценка удобства на основе доступности, ясности навигации и читаемости. Более высокие значения означают лучший пользовательский опыт.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Very poor usability, 1 = Perfect usability",
+        "description_ru": "0 = Очень плохое удобство, 1 = Идеальное удобство"
+      },
+      "default": 0.85,
+      "metric": "V_ui",
+      "formula_role": "C_usability"
+    },
+    {
+      "id": "aesthetic_score",
+      "name_en": "Aesthetic Score",
+      "name_ru": "Оценка эстетики",
+      "description_en": "Visual appeal rating based on color harmony, typography, balance, and overall design quality.",
+      "description_ru": "Оценка визуальной привлекательности на основе гармонии цветов, типографики, баланса и общего качества дизайна.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Very unattractive, 1 = Perfectly beautiful",
+        "description_ru": "0 = Очень некрасиво, 1 = Идеально красиво"
+      },
+      "default": 0.8,
+      "metric": "V_ui",
+      "formula_role": "C_aesthetic"
+    },
+    {
+      "id": "golden_ratio_compliance",
+      "name_en": "Golden Ratio Compliance",
+      "name_ru": "Соблюдение золотого сечения",
+      "description_en": "Whether the layout adheres to golden ratio proportions (1.618 or 2.618). Improves visual harmony and aesthetic value.",
+      "description_ru": "Соблюдает ли макет пропорции золотого сечения (1.618 или 2.618). Улучшает визуальную гармонию и эстетическую ценность.",
+      "control_type": "toggle",
+      "options": [
+        {
+          "value": true,
+          "label_en": "Enabled",
+          "label_ru": "Включено",
+          "description_en": "Layout uses golden ratio proportions for key elements (columns, spacing, typography scale).",
+          "description_ru": "Макет использует пропорции золотого сечения для ключевых элементов (колонки, отступы, типографическая шкала)."
+        },
+        {
+          "value": false,
+          "label_en": "Disabled",
+          "label_ru": "Отключено",
+          "description_en": "No golden ratio constraints. Layout may be less harmonious but more flexible.",
+          "description_ru": "Нет ограничений по золотому сечению. Макет может быть менее гармоничным, но более гибким."
+        }
+      ],
+      "default": true,
+      "metric": "V_ui",
+      "formula_role": "R_T"
+    },
+    {
+      "id": "self_amplification_gain",
+      "name_en": "Self-Amplification Gain",
+      "name_ru": "Коэффициент самоусиления",
+      "description_en": "How well components amplify each other's visual and functional impact. Higher values create stronger synergy.",
+      "description_ru": "Насколько хорошо компоненты усиливают визуальное и функциональное воздействие друг друга. Более высокие значения создают более сильную синергию.",
+      "control_type": "slider",
+      "range": {
+        "min": 1,
+        "max": 200,
+        "step": 1,
+        "description_en": "1 = No amplification, 200 = Maximum amplification",
+        "description_ru": "1 = Нет усиления, 200 = Максимальное усиление"
+      },
+      "default": 100,
+      "metric": "V_ui",
+      "formula_role": "G_S"
+    },
+    {
+      "id": "structural_coherence",
+      "name_en": "Structural Coherence",
+      "name_ru": "Структурная согласованность",
+      "description_en": "How well the page structure holds together logically. High coherence means components fit naturally.",
+      "description_ru": "Насколько хорошо структура страницы держится вместе логически. Высокая согласованность означает, что компоненты естественно сочетаются.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Chaotic structure, 1 = Perfectly coherent",
+        "description_ru": "0 = Хаотичная структура, 1 = Идеально согласованная"
+      },
+      "default": 0.9,
+      "metric": "N_ui",
+      "formula_role": "N_ui"
+    },
+    {
+      "id": "empty_wrappers_count",
+      "name_en": "Empty Wrappers Count",
+      "name_ru": "Количество пустых обёрток",
+      "description_en": "Number of empty div/span wrappers in the DOM. High counts indicate poor structure and increase entropy.",
+      "description_ru": "Количество пустых обёрток div/span в DOM. Высокие значения указывают на плохую структуру и увеличивают энтропию.",
+      "control_type": "stepper",
+      "range": {
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "description_en": "0 = No empty wrappers, 50 = Many unnecessary wrappers",
+        "description_ru": "0 = Нет пустых обёрток, 50 = Много лишних обёрток"
+      },
+      "default": 5,
+      "metric": "N_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "dom_depth_variance",
+      "name_en": "DOM Depth Variance",
+      "name_ru": "Вариабельность глубины DOM",
+      "description_en": "Standard deviation of DOM tree depth. High variance indicates inconsistent nesting and reduces structural order.",
+      "description_ru": "Стандартное отклонение глубины дерева DOM. Высокая вариабельность указывает на несогласованную вложенность и снижает структурный порядок.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 10,
+        "step": 0.1,
+        "description_en": "0 = Uniform depth, 10 = Highly variable depth",
+        "description_ru": "0 = Равномерная глубина, 10 = Сильно варьируемая глубина"
+      },
+      "default": 2.5,
+      "metric": "N_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "component_consistency",
+      "name_en": "Component Consistency",
+      "name_ru": "Согласованность компонентов",
+      "description_en": "Whether all components follow a unified design system (buttons, cards, forms). Improves structural order.",
+      "description_ru": "Следуют ли все компоненты единой дизайн-системе (кнопки, карточки, формы). Улучшает структурный порядок.",
+      "control_type": "toggle",
+      "options": [
+        {
+          "value": true,
+          "label_en": "Enabled",
+          "label_ru": "Включено",
+          "description_en": "All components share consistent styles, spacing, and behavior.",
+          "description_ru": "Все компоненты имеют согласованные стили, отступы и поведение."
+        },
+        {
+          "value": false,
+          "label_en": "Disabled",
+          "label_ru": "Отключено",
+          "description_en": "Components may have inconsistent styles. Reduces structural order.",
+          "description_ru": "Компоненты могут иметь несогласованные стили. Снижает структурный порядок."
+        }
+      ],
+      "default": true,
+      "metric": "N_ui",
+      "formula_role": "N_ui"
+    },
+    {
+      "id": "semantic_clarity",
+      "name_en": "Semantic Clarity",
+      "name_ru": "Семантическая ясность",
+      "description_en": "How clearly the purpose of each element is communicated. High clarity reduces semantic entropy.",
+      "description_ru": "Насколько ясно назначение каждого элемента. Высокая ясность снижает семантическую энтропию.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Unclear purpose, 1 = Crystal clear purpose",
+        "description_ru": "0 = Непонятное назначение, 1 = Кристально ясное назначение"
+      },
+      "default": 0.85,
+      "metric": "S_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "component_redundancy",
+      "name_en": "Component Redundancy",
+      "name_ru": "Избыточность компонентов",
+      "description_en": "Number of duplicate or near-duplicate components. High redundancy increases entropy and reduces clarity.",
+      "description_ru": "Количество дублирующихся или почти одинаковых компонентов. Высокая избыточность увеличивает энтропию и снижает ясность.",
+      "control_type": "stepper",
+      "range": {
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "description_en": "0 = No redundancy, 20 = Many duplicates",
+        "description_ru": "0 = Нет избыточности, 20 = Много дубликатов"
+      },
+      "default": 3,
+      "metric": "S_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "content_noise_ratio",
+      "name_en": "Content Noise Ratio",
+      "name_ru": "Доля шумового контента",
+      "description_en": "Proportion of decorative elements without functional purpose. High noise increases semantic entropy.",
+      "description_ru": "Доля декоративных элементов без функционального назначения. Высокий шум увеличивает семантическую энтропию.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = No noise, 1 = All noise",
+        "description_ru": "0 = Нет шума, 1 = Весь контент — шум"
+      },
+      "default": 0.15,
+      "metric": "S_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "semantic_tag_usage",
+      "name_en": "Semantic Tag Usage",
+      "name_ru": "Использование семантических тегов",
+      "description_en": "Whether semantic HTML tags (header, main, footer, article, section) are used. Improves semantic clarity.",
+      "description_ru": "Используются ли семантические HTML-теги (header, main, footer, article, section). Улучшает семантическую ясность.",
+      "control_type": "toggle",
+      "options": [
+        {
+          "value": true,
+          "label_en": "Enabled",
+          "label_ru": "Включено",
+          "description_en": "Page uses semantic tags for better structure and accessibility.",
+          "description_ru": "Страница использует семантические теги для лучшей структуры и доступности."
+        },
+        {
+          "value": false,
+          "label_en": "Disabled",
+          "label_ru": "Отключено",
+          "description_en": "Page uses generic divs/spans. Reduces semantic clarity.",
+          "description_ru": "Страница использует общие div/span. Снижает семантическую ясность."
+        }
+      ],
+      "default": true,
+      "metric": "S_ui",
+      "formula_role": "S_ui"
+    },
+    {
+      "id": "fractal_complexity",
+      "name_en": "Fractal Complexity",
+      "name_ru": "Фрактальная сложность",
+      "description_en": "Overall complexity of the page's hierarchical structure. Optimal value is around 9.0 for balanced complexity.",
+      "description_ru": "Общая сложность иерархической структуры страницы. Оптимальное значение около 9.0 для сбалансированной сложности.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 10,
+        "step": 0.01,
+        "description_en": "0 = Very simple, 10 = Extremely complex, 9.0 = Optimal",
+        "description_ru": "0 = Очень просто, 10 = Чрезвычайно сложно, 9.0 = Оптимально"
+      },
+      "default": 9.0,
+      "metric": "D_f_ui",
+      "formula_role": "D_f_ui"
+    },
+    {
+      "id": "hierarchy_levels",
+      "name_en": "Hierarchy Levels",
+      "name_ru": "Уровни иерархии",
+      "description_en": "Number of nesting levels in the DOM tree (e.g., header > nav > ul > li > a = 5 levels). Affects fractal dimension.",
+      "description_ru": "Количество уровней вложенности в дереве DOM (например, header > nav > ul > li > a = 5 уровней). Влияет на фрактальную размерность.",
+      "control_type": "stepper",
+      "range": {
+        "min": 1,
+        "max": 10,
+        "step": 1,
+        "description_en": "1 = Flat structure, 10 = Deep nesting",
+        "description_ru": "1 = Плоская структура, 10 = Глубокая вложенность"
+      },
+      "default": 5,
+      "metric": "D_f_ui",
+      "formula_role": "D_f_ui"
+    },
+    {
+      "id": "pattern_repetition",
+      "name_en": "Pattern Repetition",
+      "name_ru": "Повторение паттернов",
+      "description_en": "Frequency of repeating patterns (cards, grids, lists). Moderate repetition increases fractal dimension.",
+      "description_ru": "Частота повторяющихся паттернов (карточки, сетки, списки). Умеренное повторение увеличивает фрактальную размерность.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = No repetition, 1 = Maximum repetition",
+        "description_ru": "0 = Нет повторений, 1 = Максимальное повторение"
+      },
+      "default": 0.7,
+      "metric": "D_f_ui",
+      "formula_role": "D_f_ui"
+    },
+    {
+      "id": "responsive_layers",
+      "name_en": "Responsive Layers",
+      "name_ru": "Адаптивные слои",
+      "description_en": "Number of responsive breakpoints (2K, Full HD, tablet, mobile). More layers increase fractal dimension.",
+      "description_ru": "Количество адаптивных брейкпоинтов (2K, Full HD, планшет, мобила). Больше слоёв увеличивает фрактальную размерность.",
+      "control_type": "stepper",
+      "range": {
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "description_en": "1 = Single layout, 5 = Fully responsive",
+        "description_ru": "1 = Один макет, 5 = Полностью адаптивный"
+      },
+      "default": 4,
+      "metric": "D_f_ui",
+      "formula_role": "D_f_ui"
+    },
+    {
+      "id": "topological_efficiency",
+      "name_en": "Topological Efficiency",
+      "name_ru": "Топологическая эффективность",
+      "description_en": "How efficiently components are connected and organized. Higher efficiency improves self-amplification gain.",
+      "description_ru": "Насколько эффективно компоненты связаны и организованы. Более высокая эффективность улучшает коэффициент самоусиления.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Inefficient topology, 1 = Optimal topology",
+        "description_ru": "0 = Неэффективная топология, 1 = Оптимальная топология"
+      },
+      "default": 0.85,
+      "metric": "G_S_ui",
+      "formula_role": "Ξ_topo"
+    },
+    {
+      "id": "component_synergy",
+      "name_en": "Component Synergy",
+      "name_ru": "Синергия компонентов",
+      "description_en": "Whether components work together to create a unified experience. Enables self-amplification.",
+      "description_ru": "Работают ли компоненты вместе для создания единого опыта. Включает самоусиление.",
+      "control_type": "toggle",
+      "options": [
+        {
+          "value": true,
+          "label_en": "Enabled",
+          "label_ru": "Включено",
+          "description_en": "Components amplify each other's impact (e.g., consistent colors, shared spacing).",
+          "description_ru": "Компоненты усиливают воздействие друг друга (например, согласованные цвета, общие отступы)."
+        },
+        {
+          "value": false,
+          "label_en": "Disabled",
+          "label_ru": "Отключено",
+          "description_en": "Components work independently. Reduces self-amplification.",
+          "description_ru": "Компоненты работают независимо. Снижает самоусиление."
+        }
+      ],
+      "default": true,
+      "metric": "G_S_ui",
+      "formula_role": "G_S_ui"
+    },
+    {
+      "id": "adaptive_resilience",
+      "name_en": "Adaptive Resilience",
+      "name_ru": "Адаптивная устойчивость",
+      "description_en": "How well the page adapts to changes (screen size, content updates). Higher resilience improves self-amplification.",
+      "description_ru": "Насколько хорошо страница адаптируется к изменениям (размер экрана, обновление контента). Более высокая устойчивость улучшает самоусиление.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "description_en": "0 = Fragile, 1 = Highly resilient",
+        "description_ru": "0 = Хрупкая, 1 = Очень устойчивая"
+      },
+      "default": 0.9,
+      "metric": "G_S_ui",
+      "formula_role": "G_S_ui"
+    },
+    {
+      "id": "golden_ratio_tolerance",
+      "name_en": "Golden Ratio Tolerance",
+      "name_ru": "Допуск золотого сечения",
+      "description_en": "Maximum allowed deviation from the golden ratio (2.61803). Lower tolerance enforces stricter compliance.",
+      "description_ru": "Максимально допустимое отклонение от золотого сечения (2.61803). Меньший допуск обеспечивает более строгое соблюдение.",
+      "control_type": "slider",
+      "range": {
+        "min": 0,
+        "max": 0.01,
+        "step": 0.0001,
+        "description_en": "0 = Exact golden ratio, 0.01 = Loose tolerance",
+        "description_ru": "0 = Точное золотое сечение, 0.01 = Свободный допуск"
+      },
+      "default": 0.0001,
+      "metric": "R_T_ui",
+      "formula_role": "R_T"
+    }
+  ]
+}

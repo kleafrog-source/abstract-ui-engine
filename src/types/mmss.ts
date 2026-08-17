@@ -7,6 +7,8 @@ export interface MMSSDetails {
   N_empty_wrappers: number;
   C_total: number;
   C_unique: number;
+  C_raw_unique: number;
+  C_noisy: number;
   A_total: number;
   A_suspicious: number;
   N_levels: number;

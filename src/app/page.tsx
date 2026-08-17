@@ -5,6 +5,7 @@ import { Header } from "@/components/builder/header";
 import { ArchitectMode } from "@/components/builder/architect-mode";
 import { GenesisMode } from "@/components/builder/genesis-mode";
 import { SettingsMode } from "@/components/settings/settings-mode";
+import { SemanticConfigMode } from "@/components/semantic-config/semantic-config-mode";
 import { useHotkeys } from "@/hooks/useHotkeys";
 import { useEngine } from "@/lib/engine/store";
 import { Github, Sparkles } from "lucide-react";
@@ -39,7 +40,15 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header />
       <main className="flex-1">
-        {mode === "architect" ? <ArchitectMode /> : mode === "genesis" ? <GenesisMode /> : <SettingsMode />}
+        {mode === "architect" ? (
+          <ArchitectMode />
+        ) : mode === "genesis" ? (
+          <GenesisMode />
+        ) : mode === "semantic-config" ? (
+          <SemanticConfigMode />
+        ) : (
+          <SettingsMode />
+        )}
       </main>
       <footer className="mt-auto border-t bg-background/80 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-2 px-4 text-[11px] text-muted-foreground">

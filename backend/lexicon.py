@@ -9,6 +9,30 @@ from .config import LEXICON_CATEGORIES, LEXICON_DIR
 
 _entries: list[dict[str, Any]] | None = None
 _loaded_at = 0.0
+SECTION_HTML_HINTS = (
+    "<section",
+    "<header",
+    "<footer",
+    "<nav",
+    "<main",
+    "<article",
+    "<table",
+    "<aside",
+    "<h1",
+)
+MODIFIER_HINTS = (
+    "accent",
+    "size",
+    "variant",
+    "tone",
+    "padding",
+    "radius",
+    "border",
+    "shadow",
+    "color",
+    "spacing",
+    "density",
+)
 
 
 def _slugify(value: str) -> str:
@@ -50,7 +74,70 @@ def normalize_entry(entry: dict[str, Any], category: str) -> dict[str, Any]:
     normalized["tags"] = [str(tag) for tag in normalized.get("tags", [])]
     normalized["payload"] = normalized.get("payload") or ""
     normalized["conflicts"] = [str(item) for item in normalized.get("conflicts", [])]
+    html_fragment = str(normalized.get("html") or "")
+    meta = dict(normalized.get("meta") or {})
+    normalized["meta"] = meta
+    meta.setdefault("has_html", bool(html_fragment))
+    meta.setdefault(
+        "section_capable",
+        bool(html_fragment and any(hint in html_fragment.lower() for hint in SECTION_HTML_HINTS)),
+    )
+    meta.setdefault("enrichment_only", category in {"styles", "interactions", "utilities", "typography"})
+    meta.setdefault("entity_level", _infer_entity_level(normalized, category))
     return normalized
+
+
+def _infer_entity_level(entry: dict[str, Any], category: str) -> str:
+    meta = dict(entry.get("meta") or {})
+    explicit = meta.get("entity_level")
+    if isinstance(explicit, str) and explicit.strip():
+        return explicit.strip().lower()
+
+    if category == "interactions":
+        return "interaction"
+    if category == "utilities":
+        return "utility"
+    if category in {"styles", "typography"}:
+        return "modifier"
+    if category == "layouts":
+        return "section"
+
+    html_fragment = str(entry.get("html") or "").strip().lower()
+    name = str(entry.get("name", "")).lower()
+    semantic = str(entry.get("semantic_description", "")).lower()
+    payload = str(entry.get("payload", "")).lower()
+    tags = {str(tag).lower() for tag in entry.get("tags", [])}
+
+    if meta.get("section_capable"):
+        return "section"
+
+    if html_fragment:
+        if _looks_like_large_fragment(html_fragment, tags, semantic):
+            return "section"
+        return "component"
+
+    modifier_signal = 0
+    if any(hint in name for hint in MODIFIER_HINTS):
+        modifier_signal += 1
+    if any(hint in semantic for hint in MODIFIER_HINTS):
+        modifier_signal += 1
+    if any(hint in payload for hint in MODIFIER_HINTS):
+        modifier_signal += 1
+    if {"accent", "size", "variant", "tone"} & tags:
+        modifier_signal += 1
+
+    if modifier_signal >= 2:
+        return "modifier"
+    return "component"
+
+
+def _looks_like_large_fragment(html_fragment: str, tags: set[str], semantic: str) -> bool:
+    strong_tags = {"hero", "pricing", "faq", "testimonial", "sidebar", "nav", "catalog", "docs", "dashboard"}
+    if strong_tags & tags:
+        return True
+    if any(token in semantic for token in ("section", "grid", "layout", "shell", "panel group", "workspace")):
+        return True
+    return any(tag in html_fragment for tag in ("<section", "<article", "<nav", "<aside", "<header", "<footer", "<main", "<table"))
 
 
 def lexicon_stats() -> dict[str, Any]:

@@ -24,6 +24,7 @@ import {
 import { Plus } from "lucide-react";
 import { addLexiconEntry, type AddEntryParams } from "@/lib/engine/client";
 import { toast } from "sonner";
+import { useUndo } from "@/hooks/useUndo";
 
 const CATEGORIES = [
   "layouts",
@@ -49,6 +50,14 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
   });
   const [tagsRaw, setTagsRaw] = React.useState("");
   const [conflictsRaw, setConflictsRaw] = React.useState("");
+
+  const familyUndo = useUndo("custom");
+  const nameUndo = useUndo("");
+  const semanticUndo = useUndo("");
+  const payloadUndo = useUndo("");
+  const cssUndo = useUndo("");
+  const tagsUndo = useUndo("");
+  const conflictsUndo = useUndo("");
 
   const submit = async () => {
     if (!form.name || !form.semantic_description || !form.payload) {
@@ -83,6 +92,13 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
       });
       setTagsRaw("");
       setConflictsRaw("");
+      familyUndo.resetValue("custom");
+      nameUndo.resetValue("");
+      semanticUndo.resetValue("");
+      payloadUndo.resetValue("");
+      cssUndo.resetValue("");
+      tagsUndo.resetValue("");
+      conflictsUndo.resetValue("");
       onAdded?.();
     } catch (e) {
       toast.error((e as Error).message);
@@ -130,8 +146,12 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
             <div className="space-y-1.5">
               <Label className="text-xs">Family</Label>
               <Input
-                value={form.family ?? ""}
-                onChange={(e) => setForm({ ...form, family: e.target.value })}
+                value={familyUndo.value}
+                onChange={(e) => {
+                  familyUndo.setValue(e.target.value);
+                  setForm({ ...form, family: e.target.value });
+                }}
+                onKeyDown={familyUndo.onKeyDown}
                 placeholder="custom"
                 className="text-sm"
               />
@@ -140,8 +160,12 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
           <div className="space-y-1.5">
             <Label className="text-xs">Name</Label>
             <Input
-              value={form.name}
-              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              value={nameUndo.value}
+              onChange={(e) => {
+                nameUndo.setValue(e.target.value);
+                setForm({ ...form, name: e.target.value });
+              }}
+              onKeyDown={nameUndo.onKeyDown}
               placeholder="e.g. Neon Glow Button"
               className="text-sm"
             />
@@ -149,17 +173,25 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
           <div className="space-y-1.5">
             <Label className="text-xs">Semantic description (vectorized)</Label>
             <Textarea
-              value={form.semantic_description}
-              onChange={(e) => setForm({ ...form, semantic_description: e.target.value })}
-              placeholder="Rich English description with fine visual nuance — this text gets embedded for semantic search."
+              value={semanticUndo.value}
+              onChange={(e) => {
+                semanticUndo.setValue(e.target.value);
+                setForm({ ...form, semantic_description: e.target.value });
+              }}
+              onKeyDown={semanticUndo.onKeyDown}
+              placeholder="Rich English description with fine visual nuance - this text gets embedded for semantic search."
               className="min-h-[70px] text-sm"
             />
           </div>
           <div className="space-y-1.5">
             <Label className="text-xs">Payload (CSS classes / declarations)</Label>
             <Input
-              value={form.payload}
-              onChange={(e) => setForm({ ...form, payload: e.target.value })}
+              value={payloadUndo.value}
+              onChange={(e) => {
+                payloadUndo.setValue(e.target.value);
+                setForm({ ...form, payload: e.target.value });
+              }}
+              onKeyDown={payloadUndo.onKeyDown}
               placeholder="e.g. .btn-neon-glow"
               className="font-mono text-sm"
             />
@@ -167,8 +199,12 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
           <div className="space-y-1.5">
             <Label className="text-xs">CSS (optional)</Label>
             <Textarea
-              value={form.css ?? ""}
-              onChange={(e) => setForm({ ...form, css: e.target.value })}
+              value={cssUndo.value}
+              onChange={(e) => {
+                cssUndo.setValue(e.target.value);
+                setForm({ ...form, css: e.target.value });
+              }}
+              onKeyDown={cssUndo.onKeyDown}
               placeholder=".btn-neon-glow { box-shadow: 0 0 12px #0ff; }"
               className="min-h-[60px] font-mono text-xs"
             />
@@ -177,8 +213,12 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
             <div className="space-y-1.5">
               <Label className="text-xs">Tags (comma-separated)</Label>
               <Input
-                value={tagsRaw}
-                onChange={(e) => setTagsRaw(e.target.value)}
+                value={tagsUndo.value}
+                onChange={(e) => {
+                  tagsUndo.setValue(e.target.value);
+                  setTagsRaw(e.target.value);
+                }}
+                onKeyDown={tagsUndo.onKeyDown}
                 placeholder="button, neon, glow"
                 className="text-sm"
               />
@@ -186,8 +226,12 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
             <div className="space-y-1.5">
               <Label className="text-xs">Conflicts (comma-separated)</Label>
               <Input
-                value={conflictsRaw}
-                onChange={(e) => setConflictsRaw(e.target.value)}
+                value={conflictsUndo.value}
+                onChange={(e) => {
+                  conflictsUndo.setValue(e.target.value);
+                  setConflictsRaw(e.target.value);
+                }}
+                onKeyDown={conflictsUndo.onKeyDown}
                 placeholder="surface:neon, elevation:glow"
                 className="text-sm"
               />
@@ -199,7 +243,7 @@ export function AddEntryDialog({ onAdded }: { onAdded?: () => void }) {
             Cancel
           </Button>
           <Button onClick={submit} disabled={loading}>
-            {loading ? "Adding…" : "Add & Reindex"}
+            {loading ? "Adding..." : "Add & Reindex"}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import math
+import re
+import statistics
 from dataclasses import asdict, dataclass
 
-import numpy as np
 from bs4 import BeautifulSoup
 
 
@@ -19,6 +20,8 @@ CONTENT_TAGS = {
     "strong",
     "em",
     "small",
+    "pre",
+    "code",
     "h1",
     "h2",
     "h3",
@@ -55,7 +58,6 @@ STRUCTURE_TAGS = {
     "th",
 }
 
-SUSPICIOUS_ATTR_PREFIXES = ("data-", "aria-")
 SUSPICIOUS_ATTR_NAMES = {
     "style",
     "onclick",
@@ -66,10 +68,39 @@ SUSPICIOUS_ATTR_NAMES = {
     "onfocus",
     "onblur",
 }
+SAFE_DATA_ATTRS = {
+    "data-slot",
+    "data-semantic-tag",
+    "data-source-tokens",
+    "data-debug-label",
+    "data-media-strategy",
+    "data-debug-tips",
+    "data-motion-ready",
+}
+SUSPICIOUS_DATA_ATTR_PREFIXES = (
+    "data-testid",
+    "data-test",
+    "data-cy",
+    "data-qa",
+    "data-v-",
+    "data-react",
+    "data-next",
+)
+NOISY_CLASS_RE = re.compile(r"(^|[-_])(x|v)\d+$|\d{2,}$", re.IGNORECASE)
+REDUNDANT_WRAPPER_TAGS = {"div", "section"}
 
 
 def _clamp(value: float, minimum: float = 0.0, maximum: float = 1.0) -> float:
     return max(minimum, min(maximum, value))
+
+
+def _is_suspicious_attr(attr_name: str) -> bool:
+    lowered = attr_name.lower()
+    if lowered in SUSPICIOUS_ATTR_NAMES or lowered.startswith("on"):
+        return True
+    if lowered in SAFE_DATA_ATTRS:
+        return False
+    return lowered.startswith(SUSPICIOUS_DATA_ATTR_PREFIXES)
 
 
 @dataclass(slots=True)
@@ -82,6 +113,8 @@ class MMSSDetails:
     N_empty_wrappers: int
     C_total: int
     C_unique: int
+    C_raw_unique: int
+    C_noisy: int
     A_total: int
     A_suspicious: int
     N_levels: int
@@ -104,6 +137,8 @@ class MMSSMetrics:
                 N_empty_wrappers=0,
                 C_total=0,
                 C_unique=0,
+                C_raw_unique=0,
+                C_noisy=0,
                 A_total=0,
                 A_suspicious=0,
                 N_levels=0,
@@ -120,6 +155,7 @@ class MMSSMetrics:
 
         depths = [len(node.find_parents()) for node in nodes]
         class_tokens: list[str] = []
+        noisy_class_tokens = 0
         suspicious_attrs = 0
         total_attrs = 0
         content_nodes = 0
@@ -129,13 +165,20 @@ class MMSSMetrics:
         for node in nodes:
             name = node.name.lower()
             text = node.get_text(strip=True)
+            direct_text = "".join(
+                fragment.strip() for fragment in node.find_all(string=True, recursive=False)
+            ).strip()
             children = node.find_all(True, recursive=False)
 
             if name in CONTENT_TAGS or text:
                 content_nodes += 1
             if name in STRUCTURE_TAGS:
                 structure_nodes += 1
-                if not text and not children and not node.attrs:
+                if (
+                    name in REDUNDANT_WRAPPER_TAGS
+                    and not direct_text
+                    and len(children) <= 1
+                ):
                     empty_wrappers += 1
 
             class_values = node.get("class", [])
@@ -144,17 +187,28 @@ class MMSSMetrics:
             else:
                 class_tokens.extend(class_values)
 
+            if isinstance(class_values, str):
+                class_list = class_values.split()
+            else:
+                class_list = list(class_values)
+
+            for class_name in class_list:
+                if NOISY_CLASS_RE.search(class_name):
+                    noisy_class_tokens += 1
+            if len(class_list) > 4:
+                noisy_class_tokens += len(class_list) - 4
+
             for attr_name in node.attrs:
                 total_attrs += 1
-                lowered = attr_name.lower()
-                if lowered in SUSPICIOUS_ATTR_NAMES or lowered.startswith(SUSPICIOUS_ATTR_PREFIXES):
+                if _is_suspicious_attr(attr_name):
                     suspicious_attrs += 1
 
         total_nodes = len(nodes)
-        mu_depth = float(np.mean(depths)) if depths else 0.0
-        sigma_depth = float(np.std(depths)) if depths else 0.0
+        mu_depth = float(statistics.fmean(depths)) if depths else 0.0
+        sigma_depth = float(statistics.pstdev(depths)) if len(depths) > 1 else 0.0
         class_total = len(class_tokens)
-        class_unique = len(set(class_tokens))
+        class_raw_unique = len(set(class_tokens))
+        class_signal = max(class_total - noisy_class_tokens, 0)
         levels = len(set(depths))
 
         details = MMSSDetails(
@@ -165,7 +219,9 @@ class MMSSMetrics:
             sigma_depth=sigma_depth,
             N_empty_wrappers=empty_wrappers,
             C_total=class_total,
-            C_unique=class_unique,
+            C_unique=class_signal,
+            C_raw_unique=class_raw_unique,
+            C_noisy=noisy_class_tokens,
             A_total=total_attrs,
             A_suspicious=suspicious_attrs,
             N_levels=levels,
@@ -177,10 +233,9 @@ class MMSSMetrics:
             0.6 * (sigma_depth / max(mu_depth, 1.0))
             + 0.4 * (empty_wrappers / max(structure_nodes, 1))
         )
-        noise = 1 - (
-            0.7 * (class_unique / max(class_total, 1))
-            + 0.3 * (1 - suspicious_attrs / max(total_attrs, 1))
-        )
+        class_signal_ratio = class_signal / max(class_total, 1)
+        attr_signal_ratio = 1 - (suspicious_attrs / max(total_attrs, 1)) if total_attrs else 1.0
+        noise = 1 - (0.7 * class_signal_ratio + 0.3 * attr_signal_ratio)
 
         if total_nodes > 1 and levels > 1:
             fractal_dimension = math.log(levels) / math.log(total_nodes)
