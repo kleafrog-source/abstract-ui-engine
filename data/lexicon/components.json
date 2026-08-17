@@ -1,7 +1,7 @@
 {
   "category": "components",
   "version": "2.0",
-  "count": 2059,
+  "count": 2068,
   "entries": [
     {
       "id": "components.0001",
@@ -63014,6 +63014,323 @@
         "variant:inverse",
         "state:quiet"
       ]
+    },
+    {
+      "id": "components.2060",
+      "category": "components",
+      "name": "Hero Eyebrow Label",
+      "semantic_description": "Small uppercase eyebrow label positioned above hero headline. Used for product category, release badge, or marketing callout. Creates visual hierarchy and draws attention to the main headline. Common in SaaS and product landing pages.",
+      "tags": [
+        "hero",
+        "eyebrow",
+        "label",
+        "badge",
+        "headline-support",
+        "marketing"
+      ],
+      "payload": "span hero-eyebrow text-orange-600 uppercase tracking-wide",
+      "css": ".hero-eyebrow { display:inline-block; font-size:14px; font-weight:600; color:#f97316; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; }",
+      "html": "<span class='hero-eyebrow'>New Release</span>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=text"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:label",
+        "text:eyebrow"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "low",
+        "retrieval_weight": 0.7
+      }
+    },
+    {
+      "id": "components.2061",
+      "category": "components",
+      "name": "Hero CTA Button Group",
+      "semantic_description": "Paired CTA buttons for hero sections with primary and secondary actions. Primary button uses solid fill, secondary uses outline or ghost style. Horizontal layout with wrapping on mobile. Standard pattern for conversion-focused hero areas.",
+      "tags": [
+        "hero",
+        "cta",
+        "buttons",
+        "group",
+        "conversion",
+        "actions"
+      ],
+      "payload": "div hero-cta-group flex gap-4 flex-wrap",
+      "css": ".hero-cta-group { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }",
+      "html": "<div class='hero-cta-group'><button class='btn-primary'>Start Free Trial</button><button class='btn-secondary'>Watch Demo</button></div>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=group"
+        ],
+        "focusVisible": true
+      },
+      "conflicts": [
+        "component:button-group",
+        "layout:cta-row"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.8
+      }
+    },
+    {
+      "id": "components.2062",
+      "category": "components",
+      "name": "Pricing Popular Badge",
+      "semantic_description": "Prominent badge overlay for highlighting recommended pricing tier. Positioned at top of pricing card with contrasting color. Text reads Most Popular or Recommended. Drives conversion by guiding user choice in multi-tier pricing layouts.",
+      "tags": [
+        "pricing",
+        "badge",
+        "popular",
+        "recommended",
+        "highlight",
+        "conversion"
+      ],
+      "payload": "span popular-badge bg-orange-500 text-white absolute -top-3",
+      "css": ".popular-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#f97316; color:#fff; padding:4px 16px; border-radius:20px; font-size:12px; font-weight:600; }",
+      "html": "<span class='popular-badge'>Most Popular</span>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=status"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:badge",
+        "pricing:highlight"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "low",
+        "retrieval_weight": 0.7
+      }
+    },
+    {
+      "id": "components.2063",
+      "category": "components",
+      "name": "Pricing Feature List with Checkmarks",
+      "semantic_description": "Vertical list of pricing features with green checkmark icons. Each item shows included capability or benefit. Clean typography with adequate spacing. Standard pattern for communicating plan value in pricing tables and comparison grids.",
+      "tags": [
+        "pricing",
+        "features",
+        "list",
+        "checkmarks",
+        "benefits",
+        "comparison"
+      ],
+      "payload": "ul feature-list space-y-3",
+      "css": ".feature-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; } .feature-list li { display:flex; gap:12px; align-items:flex-start; } .check-icon { color:#22c55e; flex-shrink:0; }",
+      "html": "<ul class='feature-list'><li><span class='check-icon'>✓</span>Up to 10 team members</li><li><span class='check-icon'>✓</span>Analytics dashboard</li><li><span class='check-icon'>✓</span>Email support</li></ul>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=list"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:list",
+        "pricing:features"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.8
+      }
+    },
+    {
+      "id": "components.2064",
+      "category": "components",
+      "name": "Testimonial Customer Card",
+      "semantic_description": "Complete testimonial card with quote text, customer avatar, name, role, and company. Rounded corners with subtle shadow. Used in social proof sections and trust-building areas. Supports credibility through authentic customer voices.",
+      "tags": [
+        "testimonial",
+        "card",
+        "customer",
+        "social-proof",
+        "quote",
+        "review"
+      ],
+      "payload": "article testimonial-card bg-white p-8 rounded-xl shadow-sm",
+      "css": ".testimonial-card { background:#fff; padding:32px; border-radius:12px; box-shadow:0 4px 6px rgba(0,0,0,0.05); display:flex; flex-direction:column; gap:20px; } .customer-info { display:flex; gap:16px; align-items:center; } .customer-avatar { width:48px; height:48px; border-radius:50%; background:#e5e7eb; }",
+      "html": "<article class='testimonial-card'><p>This platform transformed our workflow completely.</p><div class='customer-info'><div class='customer-avatar'></div><div><h4>Sarah Chen</h4><p>CTO at TechCorp</p></div></div></article>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=article"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:card",
+        "testimonial:item"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.8
+      }
+    },
+    {
+      "id": "components.2065",
+      "category": "components",
+      "name": "Dashboard KPI Stat Card",
+      "semantic_description": "Compact stat card for dashboard metrics showing label, large number value, and trend indicator. Used in analytics dashboards and admin panels. Displays key performance indicators with up/down arrows and percentage change. Essential for data visualization contexts.",
+      "tags": [
+        "dashboard",
+        "kpi",
+        "stat",
+        "metric",
+        "analytics",
+        "number"
+      ],
+      "payload": "article stat-card bg-white border rounded-xl p-6",
+      "css": ".stat-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:8px; } .stat-label { font-size:13px; color:#6b7280; font-weight:500; } .stat-value { font-size:32px; font-weight:700; color:#111827; } .stat-trend { display:flex; align-items:center; gap:6px; font-size:13px; font-weight:600; } .trend-up { color:#22c55e; } .trend-down { color:#ef4444; }",
+      "html": "<article class='stat-card'><span class='stat-label'>Total Revenue</span><span class='stat-value'>$124,592</span><span class='stat-trend trend-up'>+12.5%</span></article>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=article"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:card",
+        "dashboard:stat"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.8
+      }
+    },
+    {
+      "id": "components.2066",
+      "category": "components",
+      "name": "Dashboard Sparkline Mini Chart",
+      "semantic_description": "Small inline line chart showing trend over time. Minimalist design without axes or labels. Used alongside KPI cards to provide visual context for metric changes. SVG-based for crisp rendering at any size.",
+      "tags": [
+        "dashboard",
+        "sparkline",
+        "chart",
+        "trend",
+        "mini",
+        "visualization"
+      ],
+      "payload": "svg sparkline w-full h-10",
+      "css": ".sparkline { width:100%; height:40px; } .sparkline path { fill:none; stroke:#6366f1; stroke-width:2; }",
+      "html": "<svg class='sparkline' viewBox='0 0 100 40'><path d='M0 35 L20 30 L40 32 L60 20 L80 25 L100 15'/></svg>",
+      "accessibility": {
+        "contrastRatio": 3.0,
+        "aria": [
+          "role=img",
+          "aria-label=Trend chart"
+        ],
+        "focusVisible": false
+      },
+      "conflicts": [
+        "component:chart",
+        "visualization:sparkline"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "low",
+        "retrieval_weight": 0.6
+      }
+    },
+    {
+      "id": "components.2067",
+      "category": "components",
+      "name": "Product Card with Image and Price",
+      "semantic_description": "E-commerce product card with image area, category label, title, star rating, price, and add-to-cart button. Standard online store pattern. Hover state elevates card with shadow. Optimized for product listing and catalog grid layouts.",
+      "tags": [
+        "product",
+        "card",
+        "ecommerce",
+        "catalog",
+        "shopping",
+        "price"
+      ],
+      "payload": "article product-card bg-white border rounded-xl overflow-hidden hover:shadow-lg",
+      "css": ".product-card { background:#fff; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; transition:shadow .2s; } .product-card:hover { box-shadow:0 12px 24px rgba(0,0,0,0.1); } .product-image { aspect-ratio:1; background:#f3f4f6; } .product-info { padding:20px; display:flex; flex-direction:column; gap:8px; }",
+      "html": "<article class='product-card'><div class='product-image'></div><div class='product-info'><span class='product-category'>Electronics</span><h3>Wireless Headphones</h3><span class='product-rating'>★★★★★</span><span class='product-price'>$299</span><button class='btn-primary btn-block'>Add to Cart</button></div></article>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=article"
+        ],
+        "focusVisible": true
+      },
+      "conflicts": [
+        "component:card",
+        "product:item"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.8
+      }
+    },
+    {
+      "id": "components.2068",
+      "category": "components",
+      "name": "Filter Toolbar with Chips",
+      "semantic_description": "Horizontal filter toolbar with category chips or pills for product filtering. Active state highlighted with solid fill. Used in catalog pages and search results. Enables quick refinement of large product sets.",
+      "tags": [
+        "filter",
+        "toolbar",
+        "chips",
+        "categories",
+        "navigation",
+        "refinement"
+      ],
+      "payload": "div filter-toolbar flex gap-2 flex-wrap",
+      "css": ".filter-toolbar { display:flex; gap:8px; flex-wrap:wrap; padding:16px 0; } .filter-chip { padding:8px 16px; border-radius:20px; border:1px solid #e5e7eb; background:#fff; font-size:14px; cursor:pointer; } .filter-chip.active { background:#111827; color:#fff; border-color:#111827; }",
+      "html": "<div class='filter-toolbar'><button class='filter-chip active'>All Products</button><button class='filter-chip'>Electronics</button><button class='filter-chip'>Accessories</button><button class='filter-chip'>Audio</button></div>",
+      "accessibility": {
+        "contrastRatio": 4.5,
+        "aria": [
+          "role=group",
+          "aria-label=Product filters"
+        ],
+        "focusVisible": true
+      },
+      "conflicts": [
+        "component:filter",
+        "navigation:chips"
+      ],
+      "family": "minimal-flat",
+      "meta": {
+        "entity_level": "component",
+        "section_capable": false,
+        "section_richness": "medium",
+        "retrieval_weight": 0.7
+      }
     }
   ]
 }
